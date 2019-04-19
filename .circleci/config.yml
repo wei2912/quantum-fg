@@ -1,0 +1,42 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: koppor/texlive
+    steps:
+      - checkout
+      - run:
+          name: Building book
+          command: |
+            latex book.tex
+            latex book.tex
+            bibtex book.aux
+            pdflatex book.tex
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - book.pdf
+      - store_artifacts:
+          path: ~/project/book.pdf
+  release:
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Releasing on GitHub
+          command: |
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete nightly ./book.pdf
+workflows:
+  version: 2
+  build_and_release:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
