@@ -50,37 +50,7 @@ there exist complex numbers $A_{1j}$ through $A_{nj}$ such that
 \end{equation} The matrix whose entries are the values $A_{ij}$ is said to form
 a \emph{matrix representation} of the operator $A$.
 
-To make sense of this formula, suppose we have an orthonormal basis where each
-vector $\ket{v_i}$ is represented as a column vector with all entries equal to
-zero except for the $i$th element, which is 1. In that case, the result of
-operating on one particular basis vector $\ket{v_k}$ with $A$ is
-\begin{align*}
-  A\ket{v_k}
-    &= \begin{bmatrix}
-        \cdots & A_{1k} & \cdots \\
-        \vdots & A_{2k} & \vdots \\
-        \vdots & \vdots & \vdots \\
-        \cdots & A_{nk} & \cdots
-      \end{bmatrix} \begin{bmatrix}
-        0 \\
-        \vdots \\
-        1 \\
-        \vdots \\
-        0
-      \end{bmatrix} \\
-    &= \begin{bmatrix}
-        A_{1k} \\
-        A_{2k} \\
-        \vdots \\
-        A_{nk}
-      \end{bmatrix} \\
-    &= A_{1k}\begin{bmatrix}1 \\ 0 \\ \vdots \\ 0\end{bmatrix}
-      + A_{2k}\begin{bmatrix}0 \\ 1 \\ \vdots \\ 0\end{bmatrix}
-      + \cdots
-      + A_{nk}\begin{bmatrix}0 \\ 0 \\ \vdots \\ 1\end{bmatrix} \\
-    &= \sum_{i=1}^n A_{ik}\ket{v_i}.
-\end{align*}
-Naturally, the matrix entries $A_{ij}$ in general depend on the basis.
+[include part on change-of-basis matrix]
 
 \paragraph{\cite{mikeandike} Exercise 2.2: (Matrix representations: example)}
 Suppose $V$ is a vector space with basis vector $\ket{0}$ and $\ket{1}$, and
@@ -167,11 +137,10 @@ For example, $\mathbb{C}^n$ has an inner product defined by \begin{equation}
 
 We call a vector space equipped with an inner product an \emph{inner product
 space}.\footnote{Discussions of quantum mechanics often refer to \emph{Hilbert
-space}. In the finite dimensional complex vector spaces that come up in quantum
-computation and quantum information, a Hilbert space is \emph{exactly the same
-thing} as an inner product space. In infinite dimensions Hilbert spaces satisfy
-additional technical restrictions above and beyond inner product spaces, which
-we will not need to worry about.}
+space}. In the finite dimensional complex vector spaces that come up in this
+book, a Hilbert space is \emph{exactly the same} as an inner product space.
+In infinite dimensions Hilbert spaces satisfy additional technical restrictions
+above and beyond inner product spaces, which we will not need to worry about.}
 
 \paragraph{\cite{mikeandike} Exercise 2.6:} Show that any inner product
 $(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
