@@ -1,4 +1,4 @@
-Quantum Focus Group
+Quantum Focus Group [![CircleCI](https://circleci.com/gh/wei2912/quantum-fg.svg?style=svg)](https://circleci.com/gh/wei2912/quantum-fg)
 ======
 
 A collection of notes on various topics in quantum-related fields.
