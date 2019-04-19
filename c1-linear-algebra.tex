@@ -1,0 +1,972 @@
+\chapter{Linear Algebra in Quantum Mechanics}
+
+\section{Bases and linear independence}
+
+\paragraph{Spanning set.} A \emph{spanning set} for a vector space is a set of
+vectors $\ket{v_1}, \ldots, \ket{v_n}$ such that any vector $\ket{v}$ in the
+vector space can be written as a linear combination $\ket{v} = \sum_i a_i
+\ket{v_i}$ of vectors in that set. We say that the vectors $\ket{v_1}, \ldots,
+\ket{v_n}$ \emph{span} the vector space.
+
+\paragraph{Linear independence.} A set of vectors is \emph{linearly
+independent} if there exists a set of complex numbers $a_1, \ldots, a_n$ with
+$a_i \neq 0$ for at least one value of $i$, such that \begin{equation}
+  a_1\ket{v_1} + a_2\ket{v_2} + \cdots + a_n\ket{v_n} = 0. \label{eq:lin-ind}
+\end{equation} A set of vectors is \emph{linearly independent} if it is not
+linearly dependent.
+
+\paragraph{Basis.} It can be shown that any two sets of linearly independent
+vectors which span a vector space $V$ contain the same number of elements. We
+call such a set a \emph{basis} for $V$. Furthermore, such a basis set always
+exists. The number of elements in the basis is defined to be the
+\emph{dimension} of $V$.
+
+\section{Linear operators and matrices}
+
+\paragraph{Linear operator.} A \emph{linear operator} between vector spaces $V$
+and $W$ is defined to be any function $A : V \rightarrow W$ which is linear in
+its inputs, \begin{equation}
+  A\left(\sum_i a_i\ket{v_i} \right) = \sum_i a_i A(\ket{v_i}).
+    \label{eq:lin-op}
+\end{equation} Usually we just write $A\ket{v}$ to denote $A(\ket{v})$. When we
+say that a linear operator $A$ is defined \emph{on} a vector space $V$, we mean
+that $A$ is a linear operator from $V$ to $V$.
+
+An important linear operator on any vector space $V$ is the \emph{identity
+operator}, $I_V$, defined by the equation $I_V\ket{v} \equiv \ket{v}$ for all
+vectors $\ket{v}$. When no chance of confusion arises we drop the subscript $V$
+and just write $I$ to denote the identity operator.
+
+Another important linear operator is the \emph{zero operator}, which we denote
+0. The zero operator maps all vectors to the zero vector, $0\ket{v} \equiv 0$.
+
+\paragraph{Matrix representation of a linear operator.} Suppose $A : V
+\rightarrow W$ is a linear operator between vector spaces $V$ and $W$. Suppose
+$\ket{v_1}, \ldots, \ket{v_m}$ is a basis for $V$ and $\ket{w_1}, \ldots,
+\ket{w_n}$ is a basis for $W$. Then for each $j$ in the range $1, \ldots, m$,
+there exist complex numbers $A_{1j}$ through $A_{nj}$ such that
+\begin{equation}
+  A\ket{v_j} = \sum_i A_{ij}\ket{w_i}.
+\end{equation} The matrix whose entries are the values $A_{ij}$ is said to form
+a \emph{matrix representation} of the operator $A$.
+
+To make sense of this formula, suppose we have an orthonormal basis where each
+vector $\ket{v_i}$ is represented as a column vector with all entries equal to
+zero except for the $i$th element, which is 1. In that case, the result of
+operating on one particular basis vector $\ket{v_k}$ with $A$ is
+\begin{align*}
+  A\ket{v_k}
+    &= \begin{bmatrix}
+        \cdots & A_{1k} & \cdots \\
+        \vdots & A_{2k} & \vdots \\
+        \vdots & \vdots & \vdots \\
+        \cdots & A_{nk} & \cdots
+      \end{bmatrix} \begin{bmatrix}
+        0 \\
+        \vdots \\
+        1 \\
+        \vdots \\
+        0
+      \end{bmatrix} \\
+    &= \begin{bmatrix}
+        A_{1k} \\
+        A_{2k} \\
+        \vdots \\
+        A_{nk}
+      \end{bmatrix} \\
+    &= A_{1k}\begin{bmatrix}1 \\ 0 \\ \vdots \\ 0\end{bmatrix}
+      + A_{2k}\begin{bmatrix}0 \\ 1 \\ \vdots \\ 0\end{bmatrix}
+      + \cdots
+      + A_{nk}\begin{bmatrix}0 \\ 0 \\ \vdots \\ 1\end{bmatrix} \\
+    &= \sum_{i=1}^n A_{ik}\ket{v_i}.
+\end{align*}
+Naturally, the matrix entries $A_{ij}$ in general depend on the basis.
+
+\paragraph{\cite{mikeandike} Exercise 2.2: (Matrix representations: example)}
+Suppose $V$ is a vector space with basis vector $\ket{0}$ and $\ket{1}$, and
+$A$ is a linear operator from $V$ to $V$ such that $A\ket{0} = \ket{1}$ and
+$A\ket{1} = \ket{0}$. Give a matrix representation for $A$, with respect to the
+input basis $\ket{0}, \ket{1}$, and the output basis $\ket{0}, \ket{1}$. Find
+input and output bases which give rise to a different matrix representation of
+$A$.
+
+\paragraph{Solution:} A matrix representation is $A = \begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+\end{bmatrix},$ which is also one of the Pauli matrices, $X$. With input basis
+$\ket{0}, \ket{1}$, and output basis $\ket{1}, \ket{0}$ (such that $A\ket{0} =
+\ket{0}, A\ket{1} = \ket{1}$), $A = \begin{bmatrix}
+  1 & 0 \\
+  0 & 1
+\end{bmatrix},$ which is the identity matrix $I$.
+
+\paragraph{\cite{mikeandike} Exercise 2.3: (Matrix representation for operator
+products)} Suppose $A$ is a linear operator from vector space $V$ to vector
+space $W$, and $B$ is a linear operator from vector space $W$ to vector space
+$X$. Let $\ket{v_i}$, $\ket{w_j}$ and $\ket{x_k}$ be bases for the vector
+spaces $V$, $W$, and $X$, respectively. Show that the matrix representation for
+the linear transformation $BA$ is the matrix product of the matrix
+representations for $B$ and $A$, with respect to the appropriate bases.
+
+\paragraph{Solution:} Writing the linear operators $A$ and $B$ using the
+definition \eqref{eq:lin-op}, \begin{equation*}
+  \begin{split}
+    A\ket{v_i} = \sum_j A_{ji}\ket{w_j}, \\
+    B\ket{w_j} = \sum_k B_{kj}\ket{x_k}.
+  \end{split}
+\end{equation*} Thus, \begin{align*}
+  BA\ket{v_i} &= B \sum_j A_{ji}\ket{w_j} \\
+    &= \sum_j A_{ji} (B\ket{w_j}) \\
+    &= \sum_j A_{ji} \left(\sum_k B_{kj} \ket{x_k}\right) \\
+    &= \sum_k \left(\sum_j B_{kj}A_{ji}\right) \ket{x_k} 
+\end{align*} which proves the statement.
+
+\paragraph{\cite{mikeandike} Exercise 2.4: (Matrix representation for
+identity)} Show that the identity operator on a vector space $V$ has a matrix
+representation which is one along the diagonal and zero everywhere else, if the
+matrix representation is taken with respect to the same input and output bases.
+This matrix is known as the \emph{identity matrix}.
+
+\paragraph{Solution:} From \eqref{eq:lin-op}, the identity matrix $I$ must
+satisfy the property \begin{equation*}
+  I\ket{v_j} = \sum_i I_{ij}\ket{v_j} = \ket{v_j}
+\end{equation*} where $v_1, \ldots, v_n$ is a basis for $V$. Naturally, the
+solution $I_{ij} = \delta_{ij}$ leads to the aforedescribed matrix. (It
+suffices to show that a solution satisfies the definition of the linear
+operator, as it is clear that linear transformations from a basis $V$ to $W$
+are unique.)
+
+\section{Inner products}
+
+\paragraph{Inner product.} An \emph{inner product} is a function which takes as
+input two vectors $\ket{v}$ and $\ket{w}$ from a vector space and produces a
+complex number as output.
+
+The standard quantum mechanical notation for the inner product $(\ket{v},
+\ket{w})$ is $\braket{v}{w}$, where $\ket{v}$ and $\ket{w}$ are vectors in the
+inner product space, and the notation $\bra{v}$ is used for the \emph{dual
+vector} to the vector $\ket{v}$; the dual is a linear operator from the inner
+product space $V$ to the complex numbers $\mathbb{C}$, defined by
+$\bra{v}(\ket{w}) \equiv \braket{v}{w} \equiv (\ket{v}, \ket{w})$.
+
+A function $(\cdot, \cdot)$ from $V \cross V$ to $\mathbb{C}$ is an inner
+product if it satisfies the requirements that: \begin{enumerate}
+  \item $(\cdot, \cdot)$ is linear in the second argument, \begin{equation}
+      \left(\ket{v}, \sum_i \lambda_i\ket{w_i}\right) = \sum_i
+      \lambda_i(\ket{v}, \ket{w_i}).
+    \end{equation}
+  \item $(\ket{v}, \ket{w}) = (\ket{w}, \ket{v})^*$
+  \item $(\ket{v}, \ket{v}) \geq 0$ with equality if and only if $\ket{v} = 0$.
+\end{enumerate}
+
+For example, $\mathbb{C}^n$ has an inner product defined by \begin{equation}
+  ((y_1, \ldots, y_n), (z_1, \ldots, z_n)) \equiv \sum_i y_i^*z_i =
+    \begin{bmatrix}y_1^* & \dots & y_n^*\end{bmatrix}
+    \begin{bmatrix}z_1 \\ \vdots \\ z_n\end{bmatrix}.
+\end{equation}
+
+We call a vector space equipped with an inner product an \emph{inner product
+space}.\footnote{Discussions of quantum mechanics often refer to \emph{Hilbert
+space}. In the finite dimensional complex vector spaces that come up in quantum
+computation and quantum information, a Hilbert space is \emph{exactly the same
+thing} as an inner product space. In infinite dimensions Hilbert spaces satisfy
+additional technical restrictions above and beyond inner product spaces, which
+we will not need to worry about.}
+
+\paragraph{\cite{mikeandike} Exercise 2.6:} Show that any inner product
+$(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
+\begin{equation}
+  \left(\sum_i \lambda_i\ket{w_i}, \ket{v}\right)
+    = \sum_i \lambda_i^*(\ket{w_i}, \ket{v}). \label{eq:conj-lin}
+\end{equation}
+
+\paragraph{Solution:} From $(\ket{v}, \ket{w}) = (\ket{w}, \ket{v})^*$,
+\begin{align*}
+  \left(\sum_i \lambda_i\ket{w_i}, \ket{v}\right)
+    &= \left(\ket{v}, \sum_i \lambda_i\ket{w_i}\right)^* \\
+    &= \sum_i (\ket{v}, \lambda_i\ket{w_i})^* \\
+    &= \sum_i \lambda_i^* (\ket{v}, \ket{w_i})^* \\
+    &= \sum_i \lambda_i^*(\ket{w_i}, \ket{v}).
+\end{align*}
+
+\paragraph{Orthogonal.} Vectors $\ket{w}$ and $\ket{v}$ are \emph{orthogonal}
+if their inner product is zero.
+
+\paragraph{Norm.} We define the \emph{norm} of a vector $\ket{v}$ such that
+$\|\ket{v}\| = 1$. We also say that $\ket{v}$ is \emph{normalized} if
+$\|\ket{v}\| = 1$. It is convenient to talk of \emph{normalizing} a vector by
+dividing by its norm; thus $\ket{v}/\|\ket{v}\|$ is the \emph{normalized} form
+of $\ket{v}$, for any non-zero vector $\ket{v}$.
+
+\paragraph{Orthonormal.} A set $\ket{i}$ of vectors with index $i$ is
+\emph{orthonormal} if each vector is a unit vector, and distinct vectors in the
+set are orthogonal, that is, $\braket{i}{j} = \delta_{ij}$, where $i$ and $j$
+are both chosen from the index set.
+
+\paragraph{Gram-Schmidt procedure.} Suppose $\ket{w_1}, \ldots, \ket{w_d}$ is a
+basis set for some vector space $V$ with an inner product. There is a useful
+method, the \emph{Gram-Schmidt} procedure, which can be used to produce an
+orthonormal basis set $\ket{v_1}, \ldots, \ket{v_d}$ for the vector space $V$.
+Define $\ket{v_1} \equiv \ket{w_1}/\|\ket{w_1}\|$, and for $1 \leq k \leq d -
+1$ define $\ket{v_{k+1}}$ inductively by \begin{equation}
+  \ket{v_{k+1}} \equiv \frac{\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+    \ket{v_i}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+    \ket{v_i}\|}. \label{eq:gs-proc}
+\end{equation}
+
+\paragraph{\cite{mikeandike} Exercise 2.8:} Prove that the Gram-Schmidt
+procedure produces an orthonormal basis for V.
+
+\paragraph{Solution:} The base case for a 1-dimensional vector space $V$ is
+trivial, as the orthonormal basis set must contain only $\ket{v_1} \equiv
+\ket{w_1}/\|\ket{w_1}\|$ as defined in the Gram-Schmidt procedure.
+
+Consider a (k+1)-dimensional vector space $V$ with basis set $\ket{w_1},
+\ldots, \ket{w_{k+1}}$. Suppose an orthonormal set $\ket{v_1}, \ldots,
+\ket{v_k}$ has been derived from the set $\ket{w_1}, \ldots, \ket{w_k}$ using
+the Gram-Schmidt procedure. Then, it is clear that $\braket{v_j}{v_k} =
+\delta_{jk}$. The vector $\ket{v_{k+1}}$ as defined by \eqref{eq:gs-proc} can
+be shown to be orthogonal to $\ket{v_j}$ for $1 \leq j \leq k$ by working from
+the inductive definition: \begin{align*}
+  \braket{v_j}{v_{k+1}}
+    &= \frac{\bra{v_j} \left(\ket{w_{k+1}} - \sum_{i=1}^k
+      \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
+      \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+    &= \frac{\braket{v_j}{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+      \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+      \ket{v_i}\|} \\
+    &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{\|\ket{w_{k+1}} -
+      \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+    &= 0.
+\end{align*} It is also clear that $\ket{v_{k+1}}$ as defined is already
+normalized. By induction, the correctness of the Gram-Schmidt procedure is
+proven.
+
+\paragraph{Outer product.} Suppose $\ket{v}$ is a vector in an inner product
+space $V$, and $\ket{w}$ is a vector in an inner product space $W$. Define
+$\ketbra{w}{v}$ to be the \emph{outer product}, or the linear operator from $V$
+to $W$ whose action is defined by \begin{equation}
+  (\ketbra{w}{v})(\ket{v'}) \equiv \ket{w}\braket{v}{v'} = \braket{v}{v'}
+    \ket{w}. \label{eq:out-prod}
+\end{equation} We can take linear combinations of outer product operators
+$\ketbra{w}{v}$ in the obvious way. By definition $\sum_i a_i
+\ketbra{w_i}{v_i}$ is the linear operator, which, when acting on $\ket{v'}$,
+produces $\sum_i a_i\ket{w_i} \braket{v_i}{v'}$ as output.
+
+\paragraph{Completness relation.} Let $\ket{i}$ be any orthonormal basis for
+the vector space $V$, so an arbitrary vector $\ket{v}$ can be written $\ket{v}
+= \sum_i v_i\ket{i}$ for some set of complex numbers $v_i$. Note that
+$\braket{i}{v} = v_i$ and therefore \begin{equation*}
+  \left(\sum_i \ketbra{i}{i}\right)\ket{v} = \sum_i \ket{i}\braket{i}{v} =
+    \sum_i v_i\ket{i} = \ket{v}.
+\end{equation*} Since the last equation is true for all $\ket{v}$ it follows
+that \begin{equation} \label{eq:comp-rel}
+  \sum_i \ketbra{i}{i} = I.
+\end{equation} This equation is known as the \emph{completeness relation}.
+
+One application of the completeness relation is to give a means for
+representing any operator in the outer product notation. Suppose $A : V
+\rightarrow W$ is a linear operator, $\ket{v_i}$ is an orthonormal basis for
+$V$, and $\ket{w_j}$ an orthonormal basis for $W$. Using the completeness
+relation twice we obtain \begin{align}
+  A &= I_WAI_V \nonumber \\
+    &= \sum_{ij} \ket{w_j}\mel{w_j}{A}{v_i}\bra{v_i} \nonumber \\
+    &= \sum_{ij} \mel{w_j}{A}{v_i}\ketbra{w_j}{v_i}, \label{eq:out-prod-rep}
+\end{align} which is the outer product representation for $A$. We also see from
+this equation that $A$ has matrix element $\mel{w_j}{A}{v_i}$ in the $i$th
+column and $j$th row, with respect to the input basis $\ket{v_i}$ and output
+basis $\ket{w_j}$.
+
+\begin{theorem}[Cauchy-Schwarz inequality]
+  For any two vectors $\ket{v}$ and $\ket{w}$, \begin{equation}
+    |\braket{v}{w}|^2 \leq \braket{v}{v}\braket{w}{w}. \label{eq:cau-sch-ine}
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  To see this, use the Gram-Schmidt procedure to construct an orthonormal basis
+  $\ket{i}$ for this vector space such that the first member of the basis
+  $\ket{i}$ is $\ket{w}/\sqrt{\braket{w}{w}}$. Using the completeness relation
+  $\sum_i \ketbra{i}{i} = I$, and dropping some non-negative terms gives
+  \begin{align*}
+    \braket{v}{v}\braket{w}{w}
+      &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
+      &\geq \frac{\braket{v}{w}\braket{w}{v}}{\braket{w}{w}} \braket{w}{w} \\
+      &= \braket{v}{w}\braket{w}{v} = \|\braket{v}{w}\|^2,
+  \end{align*} as required. A little thought shows that equality occurs if and
+  only if $\ket{v}$ and $\ket{w}$ are linearly related, $\ket{v} = z\ket{w}$ or
+  $\ket{w} = z\ket{v}$, for some scalar $z$.
+\end{proof}
+
+\section{Eigenvectors and eigenvalues}
+
+\paragraph{Eigenvector and eigenvalue.} An \emph{eigenvector} of a linear
+operator $A$ on a vector space is a non-zero vector $\ket{v}$ such that
+$A\ket{v} = v\ket{v}$, where $v$ is a complex number known as the
+\emph{eigenvalue} of $A$ corresponding to $\ket{v}$.
+
+\paragraph{Characteristic function.} The \emph{characteristic function} is
+defined to be $c(\lambda) \equiv \text{det} |A - \lambda I|$, where
+$\text{det}$ is the \emph{determinant} function for matrices; it can be shown
+that the characteristic function depends only upon the operator $A$, and not on
+the specific matrix representation used for $A$.
+
+The solutions of the \emph{characteristic equation} $c(\lambda) = 0$ are the
+eigenvalues of the operator $A$. By the fundamental theorem of algebra, every
+polynomial has at least one complex root, so every operator $A$ has at least
+one eigenvalue, and a corresponding eigenvector.
+
+\paragraph{Eigenspace.} The \emph{eigenspace} corresponding to an eigenvalue
+$v$ is the set of vectors which have eigenvalue $v$. It is a vector subspace of
+the vector space on which $A$ acts.
+
+\paragraph{Diagonal representation.} A \emph{diagonal representation} for an
+operator $A$ on a vector space $V$ is a representation $A = \sum_i \lambda_i
+\ketbra{i}{i}$, where the vectors $\ket{i}$ form an orthonormal set of
+eigenvectors for $A$, with corresponding eigenvalues $\lambda_i$. An operator
+is said to be \emph{diagonalizable} if it has a diagonal representation. In the
+next section we will find a simple set of necessary and sufficient conditions
+for an operator on a Hilbert space to be diagonalizable.
+
+\paragraph{Degenerate.} When an eigenspace is more than one dimensional we say
+that it is \emph{degenerate}. This occurs when there are multiple linearly
+independent eigenvectors with the same eigenvalue.
+
+\section{Adjoints and Hermitian operators}
+
+\paragraph{Adjoint/Hermitian conjugate.} Suppose $A$ is any linear operator on
+a Hilbert space, $V$. It turns out that there exists a unique linear operator
+$A^\dagger$ on $V$ such that for all vectors $\ket{v}, \ket{w} \in V$,
+\begin{equation}
+  (\ket{v}, A\ket{w}) = (A^\dagger \ket{v}, \ket{w}). \label{eq:adj}
+\end{equation}
+This linear operator is known as the \emph{adjoint} or \emph{Hermitian
+conjugate} of the operator $A$. From the definition it is easy to see that
+$(AB)^\dagger = B^\dagger A^\dagger$. By convention, if $\ket{v}$ is a vector,
+then we define $\ket{v}^\dagger \equiv \bra{v}$. With this definition it is not
+difficult to see that $(A\ket{v})^\dagger = \bra{v}A^\dagger$.
+
+In a matrix representation of the operator $A$, the action of the Hermitian
+conjugation operation is to take the matrix of $A$ to the conjugate-transpose
+matrix, $A^\dagger \equiv (A^*)^T$, where the $*$ indicates complex
+conjugation, and $T$ indicates the transpose operation.
+
+\paragraph{\cite{mikeandike} Exercise 2.14: (Anti-linearity of the adjoint)}
+Show that the adjoint operation is anti-linear, \begin{equation}
+  \left(\sum_i a_iA_i\right)^\dagger = \sum_i a_i^* A_i^\dagger.
+    \label{eq:adj-anti-lin}
+\end{equation}
+
+\paragraph{Solution:} Let $A = \sum_i a_iA_i$. For all vectors $\ket{v},
+\ket{w} \in V$, \begin{align*}
+  (A^\dagger \ket{v}, \ket{w}) &= (\ket{v}, A\ket{w}) \\
+    &= \sum_i a_i(\ket{v}, A_i\ket{w}) \\
+    &= \sum_i a_i(A_i\ket{w}, \ket{v})^* \\
+    &= \sum_i (A_i\ket{w}, a_i^*\ket{v})^* \\
+    &= \sum_i (a_i^*\ket{v}, A_i\ket{w}) \\
+    &= \sum_i (a_i^* A_i^\dagger \ket{v}, \ket{w}) \\
+    &= \left(\left(\sum_i a_i^* A_i^\dagger\right)\ket{v}, \ket{w}\right).
+\end{align*}
+
+\paragraph{Hermitian/self-adjoint operators.} An operator $A$ whose adjoint is
+$A$ is known as a \emph{Hermitian} or \emph{self-adjoint} operator.
+
+\paragraph{Projectors.} An important class of Hermitian operators is the
+\emph{projectors}. Suppose $W$ is a $k$-dimensional vector subspace of the
+$d$-dimensional vector space $V$. Using the Gram-Schmidt procedure it is
+possible to construct an orthonormal basis $\ket{1}, \ldots, \ket{d}$ for $V$
+such that $\ket{1}, \ldots, \ket{k}$ is an orthonormal basis for $W$. By
+definition, \begin{equation} \label{eq:proj}
+  P \equiv \sum_{i=1}^k \ketbra{i}{i}
+\end{equation} is the \emph{projector} onto the subspace $W$. It is easy to
+check that this definition is independent of the orthonormal basis $\ket{1},
+\ldots, \ket{k}$ used for $W$. From the definition it can be shown that
+$\ketbra{v}{v}$ is Hermitian for any vector $\ket{v}$, so $P$ is Hermitian,
+$P^\dagger = P$. We will often refer to the 'vector space' P, as shorthand for
+the vector space onto which $P$ is a projector.
+
+\paragraph{Orthogonal complement.} The \emph{orthogonal complement} of the
+projector $P$ defined above is the operator $Q \equiv I - P$. It is easy to see
+that $Q$ is a projector onto the vector space spanned by $\ket{v+1}, \ldots,
+\ket{d}$, which we also refer to as the \emph{orthogonal complement} of $P$,
+and may denote by $Q$.
+
+\paragraph{\cite{mikeandike} Exercise 2.16:} Show that any projector $P$
+satisfies the equation $P^2 = P$.
+
+\paragraph{Solution:} From the definition in \eqref{eq:proj}, \begin{align*}
+  P^2 &= \left(\sum_{i=1}^k \ketbra{i}{i}\right) \left(\sum_{i=1}^k
+      \ketbra{i}{i}\right) \\
+    &= \left(\sum_{i=1}^k \ket{i}\braket{i}{i}\bra{i}\right) + \left(\sum_{i, j
+      \leq k, i \neq j} \ket{i}\braket{i}{j}\bra{j}\right) \\
+    &= \left(\sum_{i=1}^k \ket{i} \|i\|^2 \bra{i}\right) + 0 \\
+    &= \sum_{i=1}^k \ketbra{i}{i} \\
+    &= P.
+\end{align*}
+
+\paragraph{Normal.} An operator $A$ is said to be \emph{normal} if $A A^\dagger
+= A^\dagger A$.
+
+Clearly, an operator which is Hermitian is also normal.
+
+\begin{theorem}[Spectral decomposition]
+  Any normal operator $M$ on a vector space $V$ is diagonal with respect to
+  some orthonormal basis for $V$. Conversely, any diagonalizable operator is
+  normal.
+\end{theorem}
+\begin{proof}
+  The converse is a simple exercise, so we prove merely the forward
+  implication, by induction on the dimension $d$ of $V$. The case $d = 1$ is
+  trivial. Let $\lambda$ be an eigenvalue of $M$, $P$ the projector onto the
+  $\lambda$ eigenspace, and $Q$ the projector onto the orthogonal complement.
+  Then $M = (P + Q)M(P + Q) = PMP + QMP + PMQ + QMQ$. As $MP\ket{v} = \lambda P
+  \ket{v}$ for any vector $\ket{v}$, $PMP = P(\lambda P) = \lambda P^2 =
+  \lambda P$. Furthermore, $QMP = (I - P)MP = MP - PMP = \lambda P - \lambda P
+  = 0$.
+
+  We claim that $PMQ = 0$ also. To see this, let $\ket{v}$ be an element of the
+  subspace $P$. Then $M M^\dagger \ket{v} = M^\dagger M \ket{v} = \lambda
+  M^\dagger \ket{v}$. Thus, $M^\dagger \ket{v}$ has eigenvalue $\lambda$ and
+  therefore is an element of the subspace $P$. It follows that $Q M^\dagger P =
+  0$. Taking the adjoint of this equation gives $PMQ = 0$, as the projectors
+  are Hermitian i.e. $P = P^\dagger$ and $Q = Q^\dagger$. Thus $M = PMP + QMQ$.
+
+  Next, we prove that $QMQ$ is normal. To see this, note that $QM = QM(P + Q) =
+  QMQ$, and $Q M^\dagger = Q M^\dagger (P+Q) = Q M^\dagger Q$. Therefore, by
+  the normality of $M$, and the observation that $Q^2 = Q$, \begin{align*}
+    Q M Q Q M^\dagger Q &= Q M Q M^\dagger Q \\
+      &= Q M M^\dagger Q \\
+      &= Q M^\dagger M Q \\
+      &= Q M^\dagger Q M Q \\
+      &= Q M^\dagger Q Q M Q,
+  \end{align*} so $QMQ$ is normal.
+
+  By induction, $QMQ$ is diagonal with respect to some orthonormal basis for
+  the subspace $Q$, and $PMP$ is already diagonal with respect to some
+  orthonormal basis for the subspace $P$. It follows that $M = PMP + QMQ$ is
+  diagonal with respect to some orthonormal basis for the total vector space.
+\end{proof}
+
+In terms of the outer product representation, this means that $M$ can be
+written as $M = \sum_i \lambda_i \ketbra{i}{i}$, where $\lambda_i$ are the
+eigenvalues of $M$, $\ket{i}$ is an orthonormal basis for $V$, and each
+$\ket{i}$ an eigenvector of $M$ with eigenvalue $\lambda_i$.
+
+In terms of projectors, $M = \sum_i \lambda_i P_i$ where $\lambda_i$ are again
+the eigenvalues of $M$, and $P_i$ is the projector onto the $\lambda_i$
+eigenspace of $M$. These projectors satisfy the completeness relation $\sum_i
+P_i = I$, and the orthonormality relation $P_iP_j = \delta_{ij}P_i$.
+
+\paragraph{Exercise 2.17:} Show that a normal matrix is Hermitian if and only
+if it has real eigenvalues.
+
+\paragraph{Solution:} Consider a normal matrix $M = \sum_i \lambda_i
+\ketbra{i}{i}$ where the vectors $\ket{i}$ form an orthonormal set of
+eigenvectors for $M$, with corresponding eigenvalues $\lambda_i$. From the
+anti-linearity of the adjoint shown in \eqref{eq:adj-anti-lin},
+\begin{equation*}
+  M^\dagger = \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger = \sum_i
+    \lambda_i^* (\ketbra{i}{i})^\dagger = \sum_i \lambda_i^* \ketbra{i}{i},
+\end{equation*} which is equal to $M$ if and only if $\lambda_i = \lambda_i^*$
+for all $i$.
+
+\paragraph{Unitary.} A matrix $U$ is said to be \emph{unitary} if $U^\dagger U
+= I$. Similarly an operator $U$ is unitary if $U^\dagger U = I$. It is easily
+checked that an operator is unitary if and only if each of its matrix
+representations is unitary. A unitary operator also satisfies $U U^\dagger =
+I$, and therefore $U$ is normal and has a spectral decomposition.
+
+Geometrically, unitary operators are important because they preserve inner
+products between vectors. To see this, let $\ket{v}$ and $\ket{w}$ be any two
+vectors. Then the inner product of $U\ket{v}$ and $U\ket{w}$ is the same as the
+inner product of $\ket{v}$ and $\ket{w}$, \begin{equation*}
+  (U\ket{v}, U\ket{w}) = \mel{v}{U^\dagger U}{w} = \mel{v}{I}{w} =
+    \braket{v}{w}.
+\end{equation*} This result suggests the following elegant outer product
+representation of any unitary $U$. Let $\ket{v_i}$ be any orthonormal basis
+set. Define $\ket{w_i} \equiv U\ket{v_i}$, so $\ket{w_i}$ is also an
+orthonormal basis set, since unitary operators preserve inner products. Note
+that $U = UI = U\sum_i \ketbra{v_i}{v_i} = \sum_i (U\ket{v_i})\bra{v_i} =
+\sum_i \ketbra{w_i}{v_i}$. Conversely, if $\ket{v_i}$ and $\ket{w_i}$ are any
+two orthonormal bases, then it is easily checked that the operator $U$ defined
+by $U \equiv \sum_i \ketbra{w_i}{v_i}$ is a unitary operator.
+
+\paragraph{\cite{mikeandike} Exercise 2.18:} Show that all eigenvalues of a
+unitary matrix have modulus 1, that is, can be written in the form
+$e^{i\theta}$ for some real $\theta$.
+
+\paragraph{Solution:} By spectral decomposition, $U$ is diagonalizable and can
+be expressed as $U = \sum_i \lambda_i \ketbra{i}{i}$. Observing that
+anti-linearity of the adjoint holds by \eqref{eq:adj-anti-lin}, \begin{align*}
+  U^\dagger U
+    &= \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger \left(\sum_j
+      \lambda_j \ketbra{j}{j}\right) \\
+    &= \left(\sum_i \lambda_i^* (\ketbra{i}{i})^\dagger\right) \left(\sum_j
+      \lambda_j \ketbra{j}{j}\right) \\
+    &= \left(\sum_i \lambda_i^*\ketbra{i}{i}\right) \left(\sum_j \lambda_j
+      \ketbra{j}{j}\right) \\
+    &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\braket{i}{j}\bra{j} \\
+    &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\delta_{ij}\bra{j} \\
+    &= \sum_i \lambda_i^*\lambda_i\ketbra{i}{i}
+\end{align*}
+The eigenvalues of $U^\dagger U = I$ are $\lambda_i^*\lambda_i = 1$ which leads
+to the desired result.
+
+\paragraph{\cite{mikeandike} Exercise 2.20: (Basis changes)} Suppose $A'$ and
+$A''$ are matrix representations of an operator $A$ on a vector space $V$ with
+respect to two different orthonormal bases, $\ket{v_i}$ and $\ket{w_i}$. Then
+the elements of $A'$ and $A''$ are $A'_{ij} = \mel{v_i}{A}{v_j}$ and $A''_{ij}
+= \mel{w_i}{A}{w_j}$. Characterize the relationship between $A'$ and $A''$.
+
+\paragraph{Solution:} Noting that one could define a unitary matrix $U = \sum_i
+\ketbra{w_i}{v_i}$ with $U^\dagger = \sum_i \ketbra{v_i}{w_i}$, \begin{align*}
+  A'_{ij} &= \mel{v_i}{A}{v_j} \\
+    &= \mel{v_i}{U U^\dagger A U U^\dagger}{v_j} \\
+    &= \sum_{p,q,r,s} \braket{v_i}{w_p} \braket{v_p}{v_q} \mel{w_q}{A}{w_r}
+      \braket{v_r}{v_s} \braket{w_s}{v_j} \\
+    &= \sum_{p,q,r,s} \braket{v_i}{w_p} \delta_{pq} \mel{w_q}{A}{w_r}
+      \delta_{rs} \braket{w_s}{v_j} \\
+    &= \sum_{p,r} \braket{v_i}{w_p} A''_{pr} \braket{w_r}{v_j} \\
+\end{align*}
+
+\paragraph{Positive operators.} A \emph{positive operator} $A$ is defined to be
+an operator such that for any vector $\ket{v}$, $(\ket{v}, A\ket{v})$ is a
+real, non-negative number. If $(\ket{v}, A\ket{v})$ is \emph{strictly} greater
+than zero for all $\ket{v} \neq 0$ then we say that $A$ is \emph{positive
+definite}.
+
+In Exercise 2.24 you will show that any positive operator is automatically
+Hermitian, and therefore by the spectral decomposition has diagonal
+representation $\sum_i \lambda_i \ketbra{i}{i}$, with non-negative eigenvalues
+$\lambda_i$.
+
+\paragraph{\cite{mikeandike} Exercise 2.22:} Prove that two eigenvectors of a
+Hermitian operator with different eigenvalues are necessarily orthogonal.
+
+\paragraph{Solution:} Suppose $A$ is a Hermitian operator with eigenvectors
+$\ket{v_i}, \ket{v_j}$ corresponding to the eigenvalues $\lambda_i, \lambda_j$.
+Note that $\mel{v_i}{A}{v_j} = (\ket{v_i}, A\ket{v_j}) = (A^\dagger \ket{v_i},
+\ket{v_j})$. Then, \begin{equation*}
+  (\ket{v_i}, A\ket{v_j}) = (\ket{v_i}, \lambda_j\ket{v_j}) = \lambda_j
+    (\ket{v_i}, \ket{v_j}).
+\end{equation*}
+On the other hand, noting that $A = A^\dagger$ and that from Exercise 2.17,
+Hermitian matrices only have real eigenvalues, \begin{align*}
+  (A^\dagger \ket{v_i}, \ket{v_j}) &= (A\ket{v_i}, \ket{v_j}) \\
+    &= (\ket{v_j}, A\ket{v_i})^* \\
+    &= (\ket{v_j}, \lambda_i\ket{v_i})^* \\
+    &= \lambda_i^*(\ket{v_j}, \ket{v_i})^* \\
+    &= \lambda_i(\ket{v_i}, \ket{v_j})
+\end{align*}
+Since $\lambda_i \neq \lambda_j$, $(\ket{v_i}, \ket{v_j}) = 0$ must hold for
+the expressions of $\mel{v_i}{A}{v_j}$ to be consistent.
+
+\paragraph{\cite{mikeandike} Exercise 2.24: (Hermiticity of positive
+operators)} Show that a positive operator is necessarily Hermitian.
+(\emph{Hint}: Show that an arbitrary operator $A$ can be written $A = B + iC$
+where $B$ and $C$ are Hermitian.)
+
+\paragraph{Solution:} Suppose $A$ is a positive operator. Then, $A$ can be
+decomposed into $A = \frac{A + A^\dagger}{2} + i\frac{A - A^\dagger}{2i} = B +
+iC$ where $B$ and $C$ are Hermitian.
+
+For any vector $\ket{v}$, $\mel{v}{A}{v} = \mel{v}{B + iC}{v} = \mel{v}{B}{v} +
+i\mel{v}{C}{v}$. Since $B$ and $C$ are Hermitian, by Exercise 2.17,
+$\mel{v}{B}{v}, \mel{v}{C}{v} \in \mathbb{R}$. However, as $\mel{v}{A}{v} \in
+\mathbb{R}$ by definition, $\mel{v}{C}{v} = 0$ for all $\ket{v}$. Hence,
+$\mel{v}{A}{v} = \mel{v}{B}{v}$ which implies that $A = A^\dagger$.
+
+\section{Tensor products}
+
+\paragraph{Tensor product.} Suppose $V$ and $W$ are vector spaces of dimension
+$m$ and $n$ respectively. For convenience we also suppose that $V$ and $W$ are
+Hilbert spaces. Then $V \otimes W$ is an $mn$ dimensional vector space. The
+elements of $V \otimes W$ are linear combinations of 'tensor products' $\ket{v}
+\otimes \ket{w}$ of elements $\ket{v}$ of $V$ and $\ket{w}$ of $W$. In
+particular, if $\ket{i}$ and $\ket{j}$ are orthonormal bases for the spaces $V$
+and $W$ then $\ket{i} \otimes \ket{j}$ is a basis for $V \otimes W$. We often
+use the abbreviated notations $\ket{v}\ket{w}$, $\ket{v, w}$ or even $\ket{vw}$
+for the tensor product $\ket{v} \otimes \ket{w}$.
+
+By definition the tensor product satisfies the following basic properties:
+\begin{enumerate}
+  \item For an arbitrary scalar $z$ and elements $\ket{v}$ of $V$ and $\ket{w}$
+    of $W$, \begin{equation*}
+      z(\ket{v} \otimes \ket{w}) = (z\ket{v}) \otimes \ket{w} = \ket{v} \otimes
+        (z\ket{w}).
+  \end{equation*}
+  \item For arbitrary $\ket{v_1}$ and $\ket{v_2}$ in $V$ and $\ket{w}$ in $W$,
+    \begin{equation*}
+      (\ket{v_1} + \ket{v_2}) \otimes \ket{w} = \ket{v_1} \otimes \ket{w} +
+        \ket{v_2} \otimes \ket{w}.
+    \end{equation*}
+  \item For arbitrary $\ket{v}$ in $V$ and $\ket{w_1}$ and $\ket{w_2}$ in $W$,
+    \begin{equation*}
+      \ket{v} \otimes (\ket{w_1} + \ket{w_2}) = \ket{v} \otimes \ket{w_1} +
+        \ket{v} \otimes \ket{w_2}.
+    \end{equation*}
+\end{enumerate}
+
+Suppose $\ket{v}$ and $\ket{w}$ are vectors in $V$ and $W$, and $A$ and $B$ are
+linear operators on $V$ and $W$, respectively. Then we can define a linear
+operator $A \otimes B$ on $V \otimes W$ by the equation \begin{equation*}
+  (A \otimes B)(\ket{v} \otimes \ket{w}) \equiv A\ket{v} \otimes B\ket{w}.
+\end{equation*}
+This can be extended to all elements of $V \otimes W$ inthe natural way to
+ensure linearity of $A \otimes B$, that is, \begin{equation*}
+  (A \otimes B)\left(\sum_i a_i\ket{v_i} \otimes \ket{w_i}\right)
+    \equiv \sum_i a_iA\ket{v_i} \otimes B\ket{w_i}.
+\end{equation*}
+
+It can be shown that $A \otimes B$ defined in this way is a well-defined linear
+operator on $V \otimes W$. This notion of the tensor product of two operators
+extends in the obvious way to the case where $A: V \rightarrow V'$ and $B: W
+\rightarrow W'$ map between different vector spaces. Indeed, an arbitrary
+linear operator $C$ mapping $V \otimes W$ to $V' \otimes W'$ can be represented
+as a linear combination of tensor products of operators mapping $V$ to $V'$ and
+$W$ to $W'$, \begin{equation*}
+  C = \sum_i c_iA_i \otimes B_i,
+\end{equation*}
+where by definition \begin{equation*}
+  \left(\sum_i c_iA_i \otimes B_i\right) \ket{v} \otimes \ket{w}
+    \equiv \sum_i c_iA_i\ket{v} \otimes B_i\ket{w}.
+\end{equation*}
+The inner products on the spaces $V$ and $W$ can be used to define a natural
+inner product on $V \otimes W$. Define \begin{equation*}
+  \left(\sum_i a_i\ket{v_i} \otimes \ket{w_i}, \sum_j b_j\ket{v'_j} \otimes
+    \ket{w'_j}\right) \equiv \sum_{i,j} a_i^*b_j \braket{v_i}{v'_j}
+    \braket{w_i}{w'_j}.
+\end{equation*}
+It can be shown that the function so defined is a well-defined inner product.
+From this inner product, the inner product space $V \otimes W$ inherits the
+other structure we are familiar with, such as notions of an adjoint, unitarity,
+normality, and Hermiticity.
+
+\paragraph{Kronecker product.} Suppose $A$ is an $m$ by $n$ matrix, and $B$ is
+a $p$ by $q$ matrix. Then we have the matrix representation: \begin{equation}
+  A \otimes B \equiv \begin{bmatrix}
+    A_{11}B & A_{12}B & \cdots & A_{1n}B \\
+    A_{21}B & A_{22}B & \cdots & A_{2n}B \\
+    \vdots & \vdots & \vdots & \vdots \\
+    A_{m1}B & A_{m2}B & \cdots & A_{mn}B
+  \end{bmatrix} \label{eq:kro-prod}
+\end{equation}
+In this representation terms like $A_{11}B$ denote $p$ by $q$ submatrices whose
+entries are proportional to $B$, with overall proportionality constant $A_{11}$
+.
+
+We mention the useful notation $\ket{\phi}^{\otimes k}$, which means
+$\ket{\phi}$ tensored with itself $k$ times. Ananalogous notation is also used
+for operations on tensor product spaces.
+
+\paragraph{\cite{mikeandike} Exercise 2.31:} Show that the tensor product of
+two positive operators is positive.
+
+\paragraph{Solution:} Consider the positive operators $A$ and $B$, and observe
+that \begin{equation*}
+  (\bra{\psi} \otimes \bra{\phi})(A \otimes B)(\ket{\psi} \otimes \ket{\phi})
+    = \mel{\psi}{A}{\psi} \otimes \mel{\phi}{B}{\phi}
+\end{equation*} by linearity.
+
+Since $A$ and $B$ are positive operators, it is clear that $\mel{\psi}{A}{\psi}
+\geq 0$ and $\mel{\phi}{B}{\phi} \geq 0$, and therefore $\mel{\psi}{A}{\psi}
+\mel{\phi}{B}{\phi} \geq 0$. Hence, $A \otimes B$ is a positive operator.
+
+\section{Operator functions}
+
+Generally speaking, given a function $f$ from the complex numbers to the
+complex numbers, it is possible to define a corresponding matrix function on
+normal matrices (or some subclass, such as the Hermitian matrices) by the
+following construction. Let $A = \sum_a a\ketbra{a}{a}$ be a spectral
+decomposition for a normal operator $A$. Define $f(A) = \sum_a f(a)
+\ketbra{a}{a}$. A little thought shows that $f(A)$ is uniquely defined. This
+procedure can be used, for example, to define the square root of a positive
+operator, the logarithm of a positive-definite operator, or the exponential
+of a normal operator.
+
+\paragraph{\cite{mikeandike} Exercise 2.34:} Find the square root and the
+logarithm of the matrix \begin{equation*}
+  \begin{bmatrix}
+    4 & 3 \\
+    3 & 4
+  \end{bmatrix}.
+\end{equation*}
+
+\paragraph{Solution:} Let the above mentioned matrix be $M$.
+
+As $M$ has eigenvalues 7 and 1 corresponding to the eigenvectors
+\begin{equation*}
+  \ket{+} = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ 1\end{bmatrix},
+  \ket{-} = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ -1\end{bmatrix}
+\end{equation*} which form an orthonormal basis, by the spectral decomposition
+theorem, $M = 7\ketbra{+}{+} + \ketbra{-}{-}$. Therefore, \begin{align*}
+  \sqrt{M} &= \sqrt{7}\ketbra{+}{+} + \sqrt{1}\ketbra{-}{-} \\
+    &= \frac{1}{2}\begin{bmatrix}
+      \sqrt{7} + 1 & \sqrt{7} - 1 \\
+      \sqrt{7} - 1 & \sqrt{7} + 1
+    \end{bmatrix}, \\
+  \log{M} &= (\log{7})\ketbra{+}{+} + (\log{1})\ketbra{-}{-} \\
+    &= \frac{\log{7}}{2}\begin{bmatrix}
+      1 & 1 \\
+      1 & 1
+    \end{bmatrix}.
+\end{align*}
+
+\paragraph{\cite{mikeandike} Exercise 2.35: (Exponential of the Pauli matrices)
+} Let $\vec{v}$ be any real, three-dimensional unit vector and $\theta$ a real
+number. Prove that \begin{equation*}
+  \mathrm{exp}(i \theta \vec{v} \cdot \vec{\sigma}) = \cos(\theta)I + i
+    \sin(\theta)\vec{v} \cdot \vec{\sigma},
+\end{equation*} where $\vec{v} \cdot \vec{\sigma} \equiv \sum_{i=1}^3 v_i
+\sigma_i$.
+
+\paragraph{Solution:} First consider $\vec{v} \cdot \vec{\sigma}$:
+\begin{align*}
+  \vec{v} \cdot \vec{\sigma} &= v_1 \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix} + v_2 \begin{bmatrix}
+      0 & -i \\
+      i & 0
+    \end{bmatrix} + v_3 \begin{bmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+      v_3 & v_1 - iv_2 \\
+      v_1 + iv_2 & - v_3
+    \end{bmatrix}.
+\end{align*}
+Solving for the characteristic equation, \begin{align*}
+  \det(\vec{v} \cdot \vec{\sigma} - \lambda I)
+    &= (v_3 - \lambda)(-v_3 - \lambda) - (v_1 - iv_2)(v_1 + iv_2) \\
+    &= \lambda^2 - (v_1^2 + v_2^2 + v_3^2) \\
+    &= \lambda^2 - |\vec{v}|^2 \\
+    &= \lambda^2 - 1,
+\end{align*} and $\vec{v} \cdot \vec{\sigma}$ has eigenvalues $\pm 1$. Let
+the eigenvectors $\ket{\lambda_{\pm 1}}$ correspond to the eigenvalues $\pm 1$,
+forming an orthonormal basis.
+
+Since $\vec{v} \cdot \vec{\sigma}$ is Hermitian, $\vec{v} \cdot \vec{\sigma}$
+is diagonalizable. Then \begin{equation*}
+  \vec{v} \cdot \vec{\sigma} = \ketbra{\lambda_1}{\lambda_1} -
+    \ketbra{\lambda_{-1}}{\lambda_{-1}}
+\end{equation*}
+and \begin{align*}
+  \mathrm{exp}(i\theta\vec{v} \cdot \vec{\sigma})
+    &= e^{i\theta \cdot 1} \ketbra{\lambda_1}{\lambda_1} +
+      e^{i\theta \cdot (-1)} \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+    &= (\cos\theta + i\sin\theta) \ketbra{\lambda_1}{\lambda_1} +
+      (\cos\theta - i\sin\theta) \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+    &= (\cos\theta)(\ketbra{\lambda_1}{\lambda_1} + \ketbra{\lambda_{-1}}
+      {\lambda_{-1}}) + (i\sin\theta)(\ketbra{\lambda_1}{\lambda_1} -
+      \ketbra{\lambda_{-1}}{\lambda_{-1}}) \\
+    &= \cos(\theta) I + i\sin(\theta) \vec{v} \cdot \vec{\sigma}.
+\end{align*}
+
+\paragraph{Trace.} The \emph{trace} of $A$ is defined to be the sum of its
+diagonal elements, \begin{equation}
+  \mathrm{tr}(A) \equiv \sum_i A_{ii}. \label{eq:tr}
+\end{equation}
+
+As an example of the trace, suppose $\ket{\psi}$ is a unit vector and $A$ is an
+arbitrary operator. To evaluate $\mathrm{tr}(A\ketbra{\psi}{\psi})$ use the
+Gram-Schmidt procedure as defined in \eqref{eq:gs-proc} to extend $\ket{\psi}$
+to an orthonormal basis $\ket{i}$ which includes $\ket{\psi}$ as the first
+element. Then we have \begin{align*}
+  \mathrm{tr}(A\ketbra{\psi}{\psi})
+    &= \sum_i \mel{i}{A}{\psi} \braket{\psi}{i} \\
+    &= \mel{\psi}{A}{\psi}.
+\end{align*}
+
+The trace is easily seen to be \emph{cyclic}, $\mathrm{tr}(AB) =
+\mathrm{tr}(BA)$, and \emph{linear}, $\mathrm{tr}(A + B) = \mathrm{tr}(A) +
+\mathrm{tr}(B)$ and $\mathrm{tr}(zA) = z\mathrm{tr}(A)$, where $A$ and $B$ are
+arbitrary matrices, and $z$ is a complex number.
+
+From the cyclic property it follows that the trace of a matrix is invariant
+under the unitary \emph{similarity transformation} $A \rightarrow U A
+U^\dagger$, as $\mathrm{tr}(U A U^\dagger) = \mathrm{tr}(U^\dagger U A) =
+\mathrm{tr}(A)$. In light of this result, it makes sense to define the trace
+of an operator $A$ to be the trace of any matrix representation of $A$. The
+invariance of the trace under unitary similarity transformations ensures that
+the trace of an operator is well defined.
+
+\paragraph{\cite{mikeandike} Exercise 2.39: (The Hilbert-Schmidt inner product
+on operators)} The set $L_V$ of linear operators on a Hilbert space $V$ is
+obviously a vector space - the sum of two linear operatotrs is a linear
+operator, $zA$ is a linear operator if $A$ is a linear operator and $z$ is a
+complex number, and there is a zero element 0. An important additional result
+is that the vector space $L_V$ can be given a natural inner product structure,
+turning it into a Hilbert space. \begin{enumerate}
+  \item Show that the function $(\cdot, \cdot)$ on $L_V \cross L_V$ defined by
+    \begin{equation}
+      (A, B) \equiv \mathrm{tr}(A^\dagger B) \label{eq:hs-inn-prod}
+    \end{equation}
+    is an inner product function. This inner product is known as the
+    \emph{Hilbert-Schmidt} or \emph{trace} inner product.
+  \item If $V$ has $d$ dimensions show that $L_V$ has dimension $d^2$.
+  \item Find an orthonormal basis of Hermitian matrices for the Hilbert space
+    $L_V$.
+\end{enumerate}
+
+\paragraph{Solution:} \begin{enumerate}
+  \item To show that the function defined is an inner product function, we need
+    to prove that a few requirements are satisfied: \begin{enumerate}
+      \item \emph{Linearity in the second argument.} This is clear from the
+        linearity of the operators $A$ and $B$, and the trace function.
+      \item \emph{$(A, B) = (B, A)^*$}, which can be rewritten as $\mathrm{tr}
+        (A^\dagger B) = \mathrm{tr}(B^\dagger A)^*$. Working from the
+        right-hand side, \begin{equation*}
+          \mathrm{tr}(B^\dagger A)^* = \mathrm{tr}((B^\dagger)^* A^*) =
+            \mathrm{tr}(B^T A^*).
+        \end{equation*}
+        As the trace function is preserved under transposition of the matrices,
+        one can consider the transpose \begin{equation*}
+          \mathrm{tr}((B^T A^*)^T) = \mathrm{tr}((A^*)^T (B^T)^T) = \mathrm{tr}
+            (A^\dagger B).
+        \end{equation*}
+      \item \emph{$(A, A) \geq 0$ with equality if and only if $A = 0$.} The
+        case of equality is trivial. As for any non-zero $A$, since $A^\dagger
+        A > 0$ for any linear operator $A$, $\mathrm{tr}(A^\dagger A) > 0$ too.
+    \end{enumerate}
+  \item Given an orthonormal basis $\ket{v_1}, \ldots, \ket{v_d}$ for $V$, we
+    construct linear operators $A_{ij}$ on $V$ such that $A_{ij}\ket{v_j} =
+    \ket{v_i}$. (Such a construction is based off \eqref{eq:lin-op}.) It is
+    clear that such a construction of $d^2$ linear operators would be linearly
+    independent and span the whole of $L_V$.
+  \item The construction mentioned in the previous part will produce an
+    orthonormal basis, albeit not solely of Hermitian matrices. However, noting
+    that $A_{ij} = A_{ji}^\dagger$, one can construct an orthonormal basis for
+    any $i < j$ which are provably Hermitian:
+    \begin{align*}
+      B_{ij} &= \frac{1}{\sqrt{2}}(A_{ij} + A_{ji}), \\
+      B_{ii} &= A_{ii}, \\
+      B_{ji} &= \frac{i}{\sqrt{2}}(A_{ij} - A_{ji}). \\
+    \end{align*}
+\end{enumerate}
+
+\section{Commutator and anti-commutator}
+
+\paragraph{Commutator.} The \emph{commutator} between two operators $A$ and $B$
+is defined to be \begin{equation}
+  [A, B] \equiv AB - BA. \label{eq:comm}
+\end{equation}
+If $[A, B] = 0$, that is, $AB = BA$, then we say $A$ \emph{commutes} with $B$.
+
+\paragraph{Anti-Commutator.} The \emph{anti-commutator} of two operators $A$
+and $B$ is defined by \begin{equation}
+  {A, B} \equiv AB + BA; \label{eq:anti-comm}
+\end{equation}
+we say $A$ \emph{anti-commutes} with $B$ if ${A, B} = 0$.
+
+It turns out that many important properties of pairs of operators can be
+deduced from their commutator and anti-commutator. Perhaps the most useful
+relation is the following connection between the commutator and the property
+of being able to \emph{simultaneously diagonalize} Hermitian operators $A$ and
+$B$, that is, write $A = \sum_i a_i\ketbra{i}{i}$, $B = \sum_i b_i\ketbra{i}{i}
+$, where $\ket{i}$ is some common orthonormal set of eigenvectors for $A$ and
+$B$.
+
+\begin{theorem}[Simultaneous diagonalization theorem]
+  Suppose $A$ and $B$ are Hermitian operators. Then $[A, B] = 0$ if and only if
+  there exists an orthonormal basis such that both $A$ and $B$ are diagonal
+  with respect to that basis. We say that $A$ and $B$ are \emph{simultaneously
+  diagonalizable} in this case.
+\end{theorem}
+
+This result connects the commutator of two operators, which is often easy to
+compute, to the property of being simultaneously diagonalizable, which is
+\emph{a priori} rather difficult to determine.
+
+\begin{proof}
+  You can (and should!) easily verify that if $A$ and $B$ are diagonal in the
+  same orthonormal basis then $[A, B] = 0$. To show the converse, let $\ket{a,
+  j}$ be an orthonormal basis for the eigenspace $V_a$ of $A$ with eigenvalue
+  $a$; the index $j$ is used to label possible degeneracies. Note that
+  \begin{equation*}
+    AB\ket{a, j} = BA\ket{a, j} = aB\ket{a, j}
+  \end{equation*}
+  and therefore $B\ket{a, j}$ is an element of the eigenspace $V_a$. Let $P_a$
+  denote the projector onto the space $V_a$ and define $B_a \equiv P_aBP_a$.
+  It is easy to see that the restriction of $B_a$ to the space $V_a$ is
+  Hermitian on $V_a$, and therefore has a spectral decomposition in terms of
+  an orthonormal set of eigenvectors which span the space $V_a$. Let's call
+  these eigenvectors $\ket{a, b, k}$, where the indices $a$ and $b$ label the
+  eigenvalues of $A$ and $B_a$, and $k$ is an extra index to allow for the
+  possibility of a degenerate $B_a$. Note that $B\ket{a, b, k}$ is an element
+  of $V_a$, so \begin{equation*}
+    B\ket{a, b, k} = P_aBP_a\ket{a, b, k} = b\ket{a, b, k}.
+  \end{equation*}
+  It follows that $\ket{a, b, k}$ is an eigenvector of $B$ with eigenvalue $b$,
+  and therefore $\ket{a, b, k}$ is an orthonormal set of eigenvectors of both
+  $A$ and $B$, spanning the entire vector space on which $A$ and $B$ are
+  defined. That is, $A$ and $B$ are simultaneously diagonalizable.
+\end{proof}
+
+\section{The polar and singular value decomposition}
+
+The \emph{polar} and \emph{singular value} decompositions are useful ways of
+breaking linear operators up into simpler parts. In particular, these
+decompositions allow us to break general linear operators up into products of
+unitary operators and positive operators.
+
+\begin{theorem}[Polar decomposition]
+  Let $A$ be a linear operator on a vector space $V$. Then there exists unitary
+  $U$ and positive operators $J$ and $K$ such that \begin{equation*}
+    A = UJ = KU,
+  \end{equation*}
+  where the unique positive operators $J$ and $K$ satisfying these equations
+  are defined by $J \equiv \sqrt{A^\dagger A}$ and $K \equiv \sqrt{A
+  A^\dagger}$. Moreover, if $A$ is invertible then $U$ is unique.
+\end{theorem}
+
+We call the expression $A = UJ$ the \emph{left polar decomposition} of $A$, and
+$A = KU$ the \emph{right polar decomposition} of $A$.
+
+\begin{proof}
+  $J \equiv \sqrt{A^\dagger A}$ is a positive operator, so it can be given a
+  spectral decomposition, $J = \sum_i \lambda_i \ketbra{i}{i}$ ($\lambda_i \geq
+  0$). Define $\ket{\psi_i} \equiv A\ket{i}$. From the definition, we see that
+  $\braket{\psi_i}{\psi_i} = \lambda_i^2$. Consider for now only those $i$ for
+  which $\lambda_i \neq 0$. For those $i$ define $\ket{e_i} \equiv \ket{\psi_i}
+  /\lambda_i$, so that the $\ket{e_i}$ are normalized. Moreover, they are
+  orthogonal, since if $i \neq j$ then $\braket{e_i}{e_j} = \mel{i}{A^\dagger A
+  }{j}/\lambda_i\lambda_j = \mel{i}{J^2}{j}/\lambda_i\lambda_j = 0$.
+
+  We have been considering $i$ such that $\lambda_i \neq 0$. Now use the
+  Gram-Schmidt procedure to extend the orthonormal set $\ket{e_i}$ so it forms
+  an orthonormal basis, which we also label $\ket{e_i}$. Define a unitary
+  operator $U \equiv \sum_i \ketbra{e_i}{i}$. When $\lambda_i \neq 0$ we have
+  $UJ\ket{i} = \lambda_i\ket{e_i} = \ket{\psi_i} = A\ket{i}$. When $\lambda_i =
+  0$ we have $UJ\ket{i} = 0 = \ket{\psi_i}$. We have proved that the action of
+  $A$ and $UJ$ agree on the basis $\ket{i}$, and thus that $A = UJ$.
+
+  $J$ is unique, since multiplying $A = UJ$ on the left by the adjoint equation
+  $A^\dagger = JU^\dagger$ gives $J^2 = A^\dagger A$, from which we see that $J
+  = \sqrt{A^\dagger A}$, uniquely. A little thought shows that if $A$ is
+  invertible, then so is $J$, so $U$ is uniquely determined by the equation $U
+  = AJ^{-1}$. The proof of the right polar decomposition follows, since $A = UJ
+  = UJU^\dagger U = KU$, where $K \equiv UJU^\dagger$ is a positive operator.
+  Since $AA^\dagger = KUU^\dagger K = K^2$ we must have $K = \sqrt{A^\dagger
+  A}$, as claimed.
+\end{proof}
+
+The singular value decomposition combines the polar decomposition and the
+spectral theorem.
+
+\begin{corollary}[Singular value decomposition]
+  Let $A$ be a square matrix. Then there exist unitary matrices $U$ and $V$,
+  and a diagonal matrix $D$ with non-negative entries such that
+  \begin{equation*}
+    A = UDV.
+  \end{equation*}
+  The diagonal elements of $D$ are called the \emph{singular values} of $A$.
+\end{corollary}
+
+\begin{proof}
+  By the polar decomposition, $A = SJ$, for unitary $S$, and positive $J$. By
+  the spectral theorem, $J = TDT^\dagger$, for unitary $T$ and diagonal $D$
+  with non-negative entries. Setting $U \equiv ST$ and $V \equiv T^\dagger$
+  completes the proof.
+\end{proof}
+

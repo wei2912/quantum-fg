@@ -1,0 +1,345 @@
+\chapter{Postulates of Quantum Mechanics}
+
+\section{State space}
+
+\begin{postulate}
+  Associated to any isolated physical system is a complex vector space with
+  inner product (that is, a Hilbert space) known as the \emph{state space} of
+  the system. The system is completely described by its \emph{state vector},
+  which is a unit vector in the system's state space.
+\end{postulate}
+
+The simplest quantum mechanical system, and the system which we will be most
+concerned with, is the \emph{qubit}. A qubit has a two-dimensional state space.
+Suppose $\ket{0}$ and $\ket{1}$ form an orthonormal basis for that state space.
+Then an arbitrary state vector in the state space can be written
+\begin{equation*}
+  \ket{\psi} = a\ket{0} + b\ket{1},
+\end{equation*} where $a$ and $b$ are complex numbers. The condition that
+$\psi$ be a unit vector, $\ketbra{\psi}{\psi} = 1$, is therefore equivalent to
+$|a|^2 + |b|^2 = 1$. The condition $\ketbra{\psi}{\psi} = 1$ is often known as
+the \emph{normalization condition} for state vectors.
+
+\paragraph{Superposition.} We say that any linear combination $\sum_i \alpha_i
+\ket{\psi_i}$ is a \emph{superposition} of the states $\ket{\psi_i}$ with
+\emph{amplitude} $\alpha_i$ for the state $\ket{\psi_i}$.
+
+\section{Evolution}
+
+\begin{postulate}
+  The evolution of a \emph{closed} quantum system is described by a
+  \emph{unitary transformation}. That is, the state $\ket{\psi}$ of the system
+  at time $t_1$ is related to the state $\ket{\psi'}$ of the system at time
+  $t_2$ by a unitary operator $U$ which depends only on the times $t_1$ and
+  $t_2$, \begin{equation*}
+    \ket{\psi'} = U\ket{\psi}.
+  \end{equation*}
+
+  The evolution of the state of a \emph{closed} quantum system is also
+  described by the \emph{Schr{\"o}dinger equation}, \begin{equation}
+    i\hbar\frac{\mathrm{d}\ket{\psi}}{\mathrm{d}t} = H\ket{\psi}.
+      \label{eq:sch-eq}
+  \end{equation}
+\end{postulate}
+
+In Schr{\"o}dinger's equation, $\hbar$ is a physical constant known
+as \emph{Planck's constant} whose value must be experimentally determined. The
+exact value is not important to us. In practice, it is common to absorb the
+factor $\hbar$ into $H$, effectively setting $\hbar = 1$. $H$ is a fixed
+Hermitian operator known as the \emph{Hamiltonian} of the closed system.
+
+Because the Hamiltonian is a Hermitian operator it has a spectral decomposition
+\begin{equation}
+  H = \sum_E E\ketbra{E}{E}, \label{eq:ham-spec-dec}
+\end{equation} with eigenvalues $E$ and corresponding normalized eigenvectors
+$\ket{E}$. The states $\ket{E}$ are conventionally referred to as \emph{energy
+eigenstates}, or sometimes as \emph{stationary states}, and $E$ is the
+\emph{energy} of the state $\ket{E}$. The lowest energy is known as the
+\emph{ground state energy} for the system, and the corresponding energy
+eigenstate (or eigenspace) is known as the \emph{ground state}. The reason the
+states $\ket{E}$ are sometimes known as stationary states is because their only
+change in time is to acquire an overall numerical factor, \begin{equation*}
+  \ket{E} \rightarrow \exp(-iEt/\hbar)\ket{E}.
+\end{equation*}
+The solution to Sch{\"o}dinger's equation will be verified later to be:
+\begin{equation*} \ket{\psi(t_2)} = \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right]
+    \ket{\psi(t_1)} = U(t_1, t_2)\ket{\psi(t_1)},
+\end{equation*} where we define \begin{equation}
+  U(t_1, t_2) \equiv \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right].
+    \label{eq:unit-sch-eq}
+\end{equation}
+
+\paragraph{\cite{mikeandike} Exercise 2.54:} Suppose $A$ and $B$ are commuting
+Hermitian operators. Prove that $\exp(A)\exp(B) = \exp(A + B)$.
+
+\paragraph{Solution:} Since $A$ and $B$ are commuting Hermitian operators, they
+are simultaneously diagonalizable. We write $A = \sum_i a_i\ketbra{i}{i}$,
+$B = \sum_j b_j\ketbra{j}{j}$, noting that $A + B = \sum_i (a_i + b_i)
+\ketbra{i}{i}$. Then, $\exp(A) = \sum_i e^{a_i}\ketbra{i}{i}$, $\exp(B) =
+\sum_j e^{b_j}\ketbra{j}{j}$, $\exp(A + B) = \sum_i e^{a_i + b_i}
+\ketbra{i}{i}$. It is clear that \begin{align*}
+  \exp(A)\exp(B)
+    &= \left(\sum_i e^{a_i}\ketbra{i}{i}\right)\left(\sum_j e^{b_j}
+      \ketbra{j}{j}\right) \\
+    &= \sum_{i, j} e^{a_i}e^{b_j}\ket{i}\delta_{ij}\bra{j} \\
+    &= \sum_i e^{a_i}e^{b_i}\ketbra{i}{i} \\
+    &= \sum_i e^{a_i + b_i}\ketbra{i}{i} = \exp(A + B),
+\end{align*} which proves the result.
+
+\paragraph{\cite{mikeandike} (modified) Exercise 2.55:} Prove that $U(t_1,
+t_2)$ as defined in \eqref{eq:unit-sch-eq} is unitary.
+
+\paragraph{Solution:} Consider $U(t_1, t_2) = \exp\left[\frac{-iH(t_2 - t_1)}
+{\hbar}\right]$ and $U(t_1, t_2)^\dagger = \exp\left[\frac{iH^\dagger(t_2 -
+t_1)}{\hbar}\right]$. Rewriting $U(t_1, t_2) = \exp(A)$ and $U(t_1,
+t_2)^\dagger = \exp(B)$ where $A$ and $B$ are Hermitian operators, it is clear
+that $A = -B$ and commute. Hence, $\exp(A)\exp(B) = \exp(A + B) = I$.
+
+\paragraph{\cite{mikeandike} Exercise 2.56:} Use the spectral decomposition to
+show that $K \equiv -i\log(U)$ is Hermitian for any unitary $U$, and thus $U =
+\exp(iK)$ for some Hermitian $K$.
+
+\paragraph{Solution:} Noting that all eigenvalues of $U$ are of modulus 1, one
+could express $U = \sum_i e^{i\theta_i}\ketbra{i}{i}$ with the spectral
+decomposition theorem, leading to $K = -i\log(U) = \sum_i \theta_i\ketbra{i}
+{i}$. Clearly, $K = K^\dagger$, so $K$ is Hermitian.
+
+\paragraph{}
+
+These exercises show that $U(t_1, t_2)$ is unitary. There is therefore a
+one-to-one correspondence between the discrete-time description of dynamics
+using unitary operators, and the continuous time description using
+Hamiltonians.
+
+\section{Quantum measurement}
+
+\begin{postulate}
+  Quantum measurements are described by a collection $\{M_m\}$ of
+  \emph{measurement operators}. These are operators acting on the state space
+  of the system being measured. The index $m$ refers to the measurement
+  outcomes that may occur in the experiment. If the state of the quantum
+  system is $\ket{\psi}$ immediately before the measurement then the
+  probability that result $m$ occurs is given by \begin{equation*}
+    p(m) = \mel{\psi}{M_m^\dagger M_m}{\psi},
+  \end{equation*} and the state of the system after the measurement is
+  \begin{equation*}
+    \frac{M_m\ket{\psi}}{\sqrt{\mel{\psi}{M_m^\dagger M_m}{\psi}}}.
+  \end{equation*}
+  The measurement operators satisfy the \emph{completeness equation},
+  \begin{equation*}
+    \sum_m M_m^\dagger M_m = I.
+  \end{equation*}
+  The completeness equation expresses the fact that probabilities sum to one:
+  \begin{equation*}
+    1 = \sum_mp(m) = \sum_m\mel{\psi}{M_m^\dagger M_m}{\psi}.
+  \end{equation*}
+\end{postulate}
+
+\paragraph{\cite{mikeandike} Exercise 2.57: (Cascaded measurements are single
+measurements)} Suppose $\{L_l\}$ and $\{M_m\}$ are two sets of measurement
+operators. Show that a measurement defined by the measuerment operators
+$\{L_l\}$ followed by a measurement defined by the measurement operators
+$\{M_m\}$ is physically equivalent to a single measurement defined by
+measurement operators $\{N_{lm}\}$ with the representation $N_{lm} \equiv M_m
+L_l$.
+
+\paragraph{Solution:} Take $\ket{\psi}$ to be the state of the quantum system
+immediately before both measurements. Then, the state of the system after
+measurement by $L_l$ is \begin{equation*}
+  \ket{\psi'} = \frac{L_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger L_l}{\psi}}},
+\end{equation*} and the state of the system after measurement by $M_m$ is
+\begin{equation*}
+  \ket{\psi''} = \frac{M_m\ket{\psi'}}{\sqrt{\mel{\psi'}{M_m^\dagger M_m}
+    {\psi'}}}.
+\end{equation*}
+Noting that $\mel{\psi'}{M_m^\dagger M_m}{\psi'} = \frac{\mel{\psi}{L_l^\dagger
+M_m^\dagger M_m L_l}{\psi}}{\mel{\psi}{L_l^\dagger L_l}{\psi}}$,
+\begin{align*}
+  \ket{\psi''} &= \left(M_m\frac{L_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger
+    L_l}{\psi}}}\right)\sqrt{\frac{\mel{\psi}{L_l^\dagger L_l}{\psi}}
+    {\mel{\psi}{L_l^\dagger M_m^\dagger M_m L_l}{\psi}}} \\
+  &= \frac{M_mL_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger M_m^\dagger M_m L_l}
+    {\psi}}} \\
+  &= \frac{N_{lm}\ket{\psi}}{\sqrt{\mel{\psi}{N_{lm}^\dagger N_{lm}}{\psi}}}.
+\end{align*}
+
+\section{Distinguishing quantum states}
+
+Consider a game where Alice choose a state $\ket{\psi_i} (1 \leq i \leq n)$
+from some fixed set of states known to both Alice and Bob. She gives the state
+$\ket{\psi_i}$ to Bob, whose task it is to identify the index $i$ of the state
+Alice has given him.
+
+Suppose the states $\ket{\psi_i}$ are orthonormal. Then Bob can do a quantum
+measurement to distinguish these states, using the following procedure. Define
+measurement operators $M_i \equiv \ketbra{\psi_i}{\psi_i}$, one for each
+possible index $i$, and an additional measurement operator $M_0$ defined as the
+positive square root of the positive operator $I - \sum_{i \neq 0}
+\ketbra{\psi_i}{\psi_i}$. These operators satisfy the completeness relation,
+and if the state $\ket{\psi_i}$ is prepared then $p(i) = \mel{\psi_i}{M_i}
+{\psi_i} = 1$, so the result $i$ occurs with certainty. Thus, it is possible
+to reliably distinguish the orthonormal states $\ket{\psi_i}$.
+
+By contrast, if the states $\ket{\psi_i}$ are not orthonormal then we can prove
+that there is \emph{no quantum measurement capable of distinguishing the
+states}.
+
+\begin{theorem}
+  Non-orthogonal states cannot be reliably distinguished through quantum
+  measurements.
+\end{theorem}
+
+\begin{proof}
+  A proof by contradiction shows that no measurement distinguishing the
+  non-orthogonal states $\ket{\psi_1}$ and $\ket{\psi_2}$ is possible. Suppose
+  such a measurement is possible. If the state $\ket{\psi_1}$ ($\ket{\psi_2}$)
+  is prepared then the probability of measuring $j$ such that $f(j) = 1$ ($f(j)
+  = 2$) must be 1. Defining $E_i \equiv \sum_{j: f(j) = i}M_j^\dagger M_j$,
+  these observations may be written as: \begin{equation*}
+    \mel{\psi_1}{E_1}{\psi_1} = 1; \mel{\psi_2}{E_2}{\psi_2} = 1.
+  \end{equation*}
+  Since $\sum_iE_i = I$ it follows that $\sum_i\mel{\psi_1}{E_i}{\psi_1} = 1$,
+  and since $\mel{\psi_1}{E_1}{\psi_1} = 1$, we must have $\mel{\psi_1}{E_2}
+  {\psi_1} = 0$, and thus $\sqrt{E_2}\ket{\psi_1} = 0$. Suppose we decompose
+  $\ket{\psi_2} = \alpha\ket{\psi_1} + \beta\ket{\phi}$, where $\ket{\phi}$ is
+  orthonormal to $\ket{\psi_1}$, $|\alpha|^2 + |\beta|^2 = 1$, and $|\beta| <
+  1$ since $\ket{\psi_1}$ and $\ket{\psi_2}$ are not orthogonal. Then
+  $\sqrt{E_2}\ket{\psi_2} = \beta\sqrt{E_2}\ket{\phi}$, which implies a
+  contradiction, as \begin{equation*}
+    \mel{\psi_2}{E_2}{\psi_2} = |\beta|^2\mel{\phi}{E_2}{\phi} \leq |\beta|^2
+      < 1,
+  \end{equation*} where the second last inequality follows from the observation
+  that \begin{equation*}
+    \mel{\phi}{E_2}{\phi} \leq \sum_i\mel{\phi}{E_i}{\phi} = \braket{\phi}
+      {\phi} = 1.
+  \end{equation*}
+\end{proof}
+
+\section{Projective measurements}
+
+\paragraph{Projective measurements.} A projective measurement is described by
+an \emph{observable}, $M$, a Hermitian operator on the state space of the
+system being observed. The observable has a spectral decomposition,
+\begin{equation*}
+  M = \sum_m mP_m,
+\end{equation*} where $P_m$ is the projector onto the eigenspace of $M$ with
+eigenvalue $m$. The possible outcomes of the measurement correspond to the
+eigenvalues, $m$, of the observable. Upon measuring the state $\ket{\psi}$, the
+probabiltiy of getting result $m$ is given by \begin{equation*}
+  p(m) = \mel{\psi}{P_m}{\psi}.
+\end{equation*} Given that outcome $m$ occurred, the state of the quantum
+systenm immediately after the measurement is \begin{equation*}
+  \frac{P_m\ket{\psi}}{\sqrt{p(m)}}.
+\end{equation*}
+
+Projective measuremnts can be understood as a special case of Postulate 3.
+Suppose the measurement operators in Postulate 3, in addition to satisftying
+the completeness relation $\sum_m M_m^\dagger M_m = I$, also satisfy the
+conditions that $M_m$ are orthogonal projectors, that is, the $M_m$ are
+Hermitian, and $M_mM_{m'} = \delta_{m, m'}M_m$. With these additional
+restrictions, Postulate 3 reduces to a projective measurement as just defined.
+
+The average value of the measurement is \begin{align*}
+  \langle M \rangle &= \sum_m mp(m) \\
+    &= \sum_m m\mel{\psi}{P_m}{\psi} \\
+    &= \bra{\psi}\left(\sum_m mP_m\right)\ket{\psi} \\
+    &= \mel{\psi}{M}{\psi};
+\end{align*} the average value of the observable $M$ is often written $\langle
+M \rangle \equiv \mel{\psi}{M}{\psi}$. From this formula for the average
+follows a formula for the standard deviation associated to observations of $M$,
+\begin{equation*}
+  [\Delta(M)]^2 = \langle (M - \langle M \rangle)^2 \rangle = \langle M^2
+    \rangle - \langle M \rangle^2.
+\end{equation*}
+
+\paragraph{\cite{mikeandike} Exercise 2.58:} Suppose we prepare a quantum
+system in an eigenstate $\ket{\psi}$ of some observable $M$, with corresponding
+eigenvalue $m$. What is the average observed value of $M$, and the standard
+deviation?
+
+\paragraph{Solution:} The average observed value of $M$ is \begin{equation*}
+  \langle M \rangle = \mel{\psi}{M}{\psi} = \mel{\psi}{m}{\psi} =
+    m\braket{\psi}{\psi} = m.
+\end{equation*} Similarly, the average observed value of $M^2$ is
+\begin{equation*}
+  \langle M^2 \rangle = \mel{\psi}{M^2}{\psi} = \mel{\psi}{m^2}{\psi} =
+    m^2\braket{\psi}{\psi} = m^2.
+\end{equation*} It is clear that the standard deviation is $\Delta(M) = \sqrt{
+  \langle M^2 \rangle - \langle M \rangle^2} = \sqrt{m^2 - m^2} = 0$.
+
+\paragraph{} This formulation of measurement and standard deviations in terms
+of observables gives rise in an elegant way to results such as the
+\emph{Heisenberg uncertainty principle}.
+
+\begin{proof}[Heisenberg uncertainty principle]
+  Suppose $A$ and $B$ are two Hermitian operators, and $\ket{\psi}$ is a
+  quantum state. Suppose $\mel{\psi}{AB}{\psi} = x + iy$, where $x$ and $y$ are
+  real. Note that $\mel{\psi}{[A, B]}{\psi} = 2iy$ and $\mel{\psi}{\{A, B\}}
+  {\psi} = 2x$. This implies that \begin{equation*}
+    |\mel{\psi}{[A, B]}{\psi}|^2 + |\mel{\psi}{\{A, B\}}{\psi}|^2 =
+      4|\mel{\psi}{AB}{\psi}|^2.
+  \end{equation*} By the Cauchy-Schwarz inequality \begin{equation*}
+    |\mel{\psi}{AB}{\psi}|^2 \leq \mel{\psi}{A^2}{\psi}\mel{\psi}{B^2}{\psi},
+  \end{equation*} which combined with the above equation and dropping a
+  non-negative term gives \begin{equation*}
+    |\mel{\psi}{[A, B]}{\psi}|^2 \leq 4\mel{\psi}{A^2}{\psi}\mel{\psi}{B^2}
+      {\psi}.
+  \end{equation*} Suppose $C$ and $D$ are two observables. Substituting $A = C
+  - \langle C \rangle$ and $B = D - \langle D \rangle$ into the last equation,
+  we obtain Heisenberg's uncertainty principle as it is usually stated:
+  \begin{equation*}
+    \Delta(C)\Delta(D) \geq \frac{|\mel{\psi}{[C, D]}{\psi}|}{2}.
+      \label{eq:hei-unc-prin}
+  \end{equation*}
+
+  The correct interpretation of the uncertainty principle is that if we prepare
+  a large number of quantum systems in identical states, $\ket{\psi}$, and then
+  perform measurements of $C$ on some of those systems, and of $D$ in others,
+  then the standard deviation $\Delta(C)$ of the $C$ results times the standard
+  deviation $\Delta(D)$ of the $D$ results for $D$ will satisfy the inequality
+  \eqref{eq:hei-unc-prin}.
+\end{proof}
+
+Rather than giving an observable to describe a projective measurement, often
+people simply list a complete set of orthogonal projectors $P_m$ satisfying the
+relations $\sum_m P_m = I$ and $P_mP_{m'} = \delta_{mm'}P_m$. The corresponding
+observable implicit in this usage is $M = \sum_m mP_m$. Another widely used
+phrase, to `measure in a basis $\ket{m}$', where $\ket{m}$ forms an orthonormal
+basis, simply means th perform the projective measurement with projectors $P_m
+= \ketbra{m}{m}$.
+
+\paragraph{} Suppose $\vec{v}$ is any real three-dimensional unit vector. Then
+we can define an observable: \begin{equation*}
+  \vec{v} \cdot \vec{\sigma} \equiv v_1\sigma_1 + v_2\sigma_2 + v_3\sigma_3.
+\end{equation*} Measurement of this observable is sometimes referred to as a
+`measurement of spin along the $\vec{v}$ axis', for historical reasons.
+
+\paragraph{\cite{mikeandike} Exercise 2.59:} Suppose we have qubit in the state
+$\ket{0}$, and we measure the observable $X$. What is the average value of $X$?
+What is the standard deviation of $X$?
+
+\paragraph{Solution:} The average observed value of $X$ is \begin{equation*}
+  \langle X \rangle = \mel{0}{X}{0} = \braket{0}{1} = 0,
+\end{equation*} while the average observed of $X^2$ is \begin{equation*}
+  \langle X^2 \rangle = \mel{0}{X^2}{0} = \braket{1}{1} = 1.
+\end{equation*} Hence, the standard deviation of $X$ is $\Delta(X) = \sqrt{
+\langle X^2 \rangle - \langle X \rangle^2} = \sqrt{1 - 0^2} = 1$.
+
+\paragraph{\cite{mikeandike} Exercise 2.60:} Show that $\vec{v} \cdot
+\vec{\sigma}$ has eigenvalues $\pm 1$, and that the projectors onto the
+corresponding eigenspaces are given by $P_\pm = (1 \pm \vec{v} \cdot
+\vec{\sigma})/2$.
+
+\paragraph{Solution:} As the Pauli matrices are Hermitian, it is clear that
+$\vec{v} \cdot \vec{\sigma}$ is Hermitian. The proof of $(\vec{v} \cdot
+\vec{\sigma})^2 = I$ has been omitted; it can be derived by use of the property
+$\sigma_j\sigma_k = \delta_{jk}I + i\sum_{l = 1}^3\epsilon_{jkl}\sigma_l$, for
+which $\epsilon_{jkl}$ is the antisymmetric tensor on three indices.
+
+Suppose $\ket{\lambda}$ is an eigenstate of $\vec{v} \cdot \vec{\sigma}$ with
+eigenvalue $\lambda$. Then, $\vec{v} \cdot \vec{\sigma} \ket{\lambda} = \lambda
+\ket{\lambda}$, and so $(\vec{v} \cdot \vec{\sigma})^2 \ket{\lambda} =
+\lambda^2 \ket{\lambda}$. On the other hand, $(\vec{v} \cdot \vec{\sigma})^2 =
+I$, so $\lambda^2 = 1$ and therefore $\vec{v} \cdot \vec{\sigma}$ has
+eigenvalues $\pm 1$.
+

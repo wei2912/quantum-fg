@@ -1,0 +1,29 @@
+\documentclass[oneside]{book}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{physics}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{postulate}{Postulate}
+\newtheorem{theorem}{Theorem}
+
+\setcounter{chapter}{-1}
+\begin{document}
+  \frontmatter
+
+  \title{Quantum Mechanics: Theory and Applications in the Frontier of
+  Computing, Physics and Chemistry}
+  \maketitle
+  \tableofcontents
+
+  \mainmatter
+
+  \include{c0-conventions}
+  \include{c1-linear-algebra}
+  \include{c2-postulates-qm}
+  \bibliographystyle{alpha}
+  \bibliography{references}
+\end{document}
+
