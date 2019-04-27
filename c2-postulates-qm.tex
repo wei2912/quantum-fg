@@ -325,21 +325,55 @@ What is the standard deviation of $X$?
 \end{equation*} Hence, the standard deviation of $X$ is $\Delta(X) = \sqrt{
 \langle X^2 \rangle - \langle X \rangle^2} = \sqrt{1 - 0^2} = 1$.
 
-\paragraph{\cite{mikeandike} Exercise 2.60:} Show that $\vec{v} \cdot
-\vec{\sigma}$ has eigenvalues $\pm 1$, and that the projectors onto the
-corresponding eigenspaces are given by $P_\pm = (1 \pm \vec{v} \cdot
-\vec{\sigma})/2$.
+\subsection{POVM Measurements}
 
-\paragraph{Solution:} As the Pauli matrices are Hermitian, it is clear that
-$\vec{v} \cdot \vec{\sigma}$ is Hermitian. The proof of $(\vec{v} \cdot
-\vec{\sigma})^2 = I$ has been omitted; it can be derived by use of the property
-$\sigma_j\sigma_k = \delta_{jk}I + i\sum_{l = 1}^3\epsilon_{jkl}\sigma_l$, for
-which $\epsilon_{jkl}$ is the antisymmetric tensor on three indices.
+\paragraph{Positive Operator-Valued Measure (POVM).} Suppose a measurement
+described by measurement operators $M_m$ is performed upon a quantum system in
+the state $\ket{\psi}$. Then the probability of outcome $m$ is given by $p(m) =
+\mel{\psi}{M_m^{\dagger}M_m}{\psi}$. Suppose we define \begin{equation*}
+  E_m \equiv M_m^{\dagger}M_m.
+\end{equation*} Then from Postulate 3 and elementary linear algebra, $E_m$ is a
+positive operator such that $\sum_mE_m = I$ and $p(m) = \mel{\psi}{E_m}{\psi}$.
+Thus the set of operators $E_m$ are sufficient to determine the probabilities
+of the different measurement outcomes. The operators $E_m$ are known as the
+\emph{POVM elements} associated with the measurement. The complete set
+$\{E_m\}$ is known as a \emph{POVM}.
 
-Suppose $\ket{\lambda}$ is an eigenstate of $\vec{v} \cdot \vec{\sigma}$ with
-eigenvalue $\lambda$. Then, $\vec{v} \cdot \vec{\sigma} \ket{\lambda} = \lambda
-\ket{\lambda}$, and so $(\vec{v} \cdot \vec{\sigma})^2 \ket{\lambda} =
-\lambda^2 \ket{\lambda}$. On the other hand, $(\vec{v} \cdot \vec{\sigma})^2 =
-I$, so $\lambda^2 = 1$ and therefore $\vec{v} \cdot \vec{\sigma}$ has
-eigenvalues $\pm 1$.
+\paragraph{\cite{mikeandike} Exercise 2.62:} Show that any measurement where
+the measurement operators and the POVM elements coincide is a projective
+measurement.
+
+\paragraph{Solution:} A measurement operator $M_m$ would be defined as a
+POVM element $E_m = M_m^{\dagger}M_m$, which leads to \begin{equation*}
+  \mel{\psi}{E_m}{\psi} = \mel{\psi}{M_m}{\psi} \geq 0
+\end{equation*} for all $\ket{\psi}$. As $M_m$ is a positive operator, it must
+be Hermitian. Therefore, \begin{equation*}
+  E_m = M_m^{\dagger}M_m = M_mM_m = M_m^2 = M_m
+\end{equation*} which, by definition, shows that $M_m$ be a projective
+measurement.
+
+\paragraph{\cite{mikeandike} Exercise 2.63:} Suppose a measurement is described
+by measurement operators $M_m$. Show that there exist unitary operators $U_m$
+such that $M_m = U_m\sqrt{E_m}$, where $E_m$ is the POVM associated to the
+measurement.
+
+\paragraph{Solution:} Noting that $U_m^{\dagger}U_m = I$, \begin{align*}
+  M_m^{\dagger}M_m &= \sqrt{E_m}U_m^{\dagger}U_m\sqrt{E_m} \\
+    &= \sqrt{E_m}I\sqrt{E_m} \\
+    &= E_m.
+\end{align*}
+
+\subsection{Phase}
+
+\paragraph{Phase.} Two amplitudes, $a$ and $b$, \emph{differ by a relative
+phase} if there is a real $\theta$ such that $a = \exp(i\theta)b$.
+
+[more elaboration needed, the elaboration in my book talks about global phase
+vs relative phase but idk if we'll want to put that in]
+
+\paragraph{\cite{mikeandike} Exercise 2.65:} Express the states $(\ket{0} +
+\ket{1})/\sqrt{2}$ and $(\ket{0} - \ket{1})/\sqrt{2}$ in a basis in which they
+are not the same up to a relative phase shift.
+
+[idk what the soln for this is supposed to mean either]
 
