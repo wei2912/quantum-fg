@@ -28,9 +28,7 @@ and $W$ is defined to be any function $A : V \rightarrow W$ which is linear in
 its inputs, \begin{equation}
   A\left(\sum_i a_i\ket{v_i} \right) = \sum_i a_i A(\ket{v_i}).
     \label{eq:lin-op}
-\end{equation} Usually we just write $A\ket{v}$ to denote $A(\ket{v})$. When we
-say that a linear operator $A$ is defined \emph{on} a vector space $V$, we mean
-that $A$ is a linear operator from $V$ to $V$.
+\end{equation}
 
 An important linear operator on any vector space $V$ is the \emph{identity
 operator}, $I_V$, defined by the equation $I_V\ket{v} \equiv \ket{v}$ for all
@@ -173,11 +171,11 @@ set are orthogonal, that is, $\braket{i}{j} = \delta_{ij}$, where $i$ and $j$
 are both chosen from the index set.
 
 \paragraph{Gram-Schmidt procedure.} Suppose $\ket{w_1}, \ldots, \ket{w_d}$ is a
-basis set for some vector space $V$ with an inner product. There is a useful
-method, the \emph{Gram-Schmidt} procedure, which can be used to produce an
-orthonormal basis set $\ket{v_1}, \ldots, \ket{v_d}$ for the vector space $V$.
-Define $\ket{v_1} \equiv \ket{w_1}/\|\ket{w_1}\|$, and for $1 \leq k \leq d -
-1$ define $\ket{v_{k+1}}$ inductively by \begin{equation}
+basis set for some vector space $V$ with an inner product. The
+\emph{Gram-Schmidt} procedure can be used to produce an orthonormal basis set
+$\ket{v_1}, \ldots, \ket{v_d}$ for the vector space $V$. Define $\ket{v_1}
+\equiv \ket{w_1}/\|\ket{w_1}\|$, and for $1 \leq k \leq d - 1$ define
+$\ket{v_{k+1}}$ inductively by \begin{equation}
   \ket{v_{k+1}} \equiv \frac{\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
     \ket{v_i}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
     \ket{v_i}\|}. \label{eq:gs-proc}
@@ -233,11 +231,10 @@ that \begin{equation} \label{eq:comp-rel}
   \sum_i \ketbra{i}{i} = I.
 \end{equation} This equation is known as the \emph{completeness relation}.
 
-One application of the completeness relation is to give a means for
-representing any operator in the outer product notation. Suppose $A : V
-\rightarrow W$ is a linear operator, $\ket{v_i}$ is an orthonormal basis for
-$V$, and $\ket{w_j}$ an orthonormal basis for $W$. Using the completeness
-relation twice we obtain \begin{align}
+The completeness relation allows us to express any operator in the outer
+product notation. Suppose $A : V \rightarrow W$ is a linear operator,
+$\ket{v_i}$ is an orthonormal basis for $V$, and $\ket{w_j}$ an orthonormal
+basis for $W$. Using the completeness relation twice we obtain \begin{align}
   A &= I_WAI_V \nonumber \\
     &= \sum_{ij} \ket{w_j}\mel{w_j}{A}{v_i}\bra{v_i} \nonumber \\
     &= \sum_{ij} \mel{w_j}{A}{v_i}\ketbra{w_j}{v_i}, \label{eq:out-prod-rep}
@@ -252,10 +249,10 @@ basis $\ket{w_j}$.
   \end{equation}
 \end{theorem}
 \begin{proof}
-  To see this, use the Gram-Schmidt procedure to construct an orthonormal basis
-  $\ket{i}$ for this vector space such that the first member of the basis
-  $\ket{i}$ is $\ket{w}/\sqrt{\braket{w}{w}}$. Using the completeness relation
-  $\sum_i \ketbra{i}{i} = I$, and dropping some non-negative terms gives
+  By the Gram-Schmidt procedure, construct an orthonormal basis $\ket{i}$ for
+  this vector space such that the first member of the basis $\ket{i}$ is
+  $\ket{w}/\sqrt{\braket{w}{w}}$. Using the completeness relation $\sum_i
+  \ketbra{i}{i} = I$, and dropping some non-negative terms gives
   \begin{align*}
     \braket{v}{v}\braket{w}{w}
       &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
