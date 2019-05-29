@@ -83,10 +83,11 @@ definition \eqref{eq:lin-op}, \begin{equation*}
     B\ket{w_j} = \sum_k B_{kj}\ket{x_k}.
   \end{split}
 \end{equation*} Thus, \begin{align*}
-  BA\ket{v_i} &= B \sum_j A_{ji}\ket{w_j} \\
-    &= \sum_j A_{ji} (B\ket{w_j}) \\
-    &= \sum_j A_{ji} \left(\sum_k B_{kj} \ket{x_k}\right) \\
-    &= \sum_k \left(\sum_j B_{kj}A_{ji}\right) \ket{x_k} 
+  BA\ket{v_i}
+  &= B \sum_j A_{ji}\ket{w_j} \\
+  &= \sum_j A_{ji} (B\ket{w_j}) \\
+  &= \sum_j A_{ji} \left(\sum_k B_{kj} \ket{x_k}\right) \\
+  &= \sum_k \left(\sum_j B_{kj}A_{ji}\right) \ket{x_k} 
 \end{align*} which proves the statement.
 
 \paragraph{\cite{mikeandike} Exercise 2.4: (Matrix representation for
@@ -150,10 +151,10 @@ $(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
 \paragraph{Solution:} From $(\ket{v}, \ket{w}) = (\ket{w}, \ket{v})^*$,
 \begin{align*}
   \left(\sum_i \lambda_i\ket{w_i}, \ket{v}\right)
-    &= \left(\ket{v}, \sum_i \lambda_i\ket{w_i}\right)^* \\
-    &= \sum_i (\ket{v}, \lambda_i\ket{w_i})^* \\
-    &= \sum_i \lambda_i^* (\ket{v}, \ket{w_i})^* \\
-    &= \sum_i \lambda_i^*(\ket{w_i}, \ket{v}).
+  &= \left(\ket{v}, \sum_i \lambda_i\ket{w_i}\right)^* \\
+  &= \sum_i (\ket{v}, \lambda_i\ket{w_i})^* \\
+  &= \sum_i \lambda_i^* (\ket{v}, \ket{w_i})^* \\
+  &= \sum_i \lambda_i^*(\ket{w_i}, \ket{v}).
 \end{align*}
 
 \paragraph{Orthogonal.} Vectors $\ket{w}$ and $\ket{v}$ are \emph{orthogonal}
@@ -196,15 +197,15 @@ the Gram-Schmidt procedure. Then, it is clear that $\braket{v_j}{v_k} =
 be shown to be orthogonal to $\ket{v_j}$ for $1 \leq j \leq k$ by working from
 the inductive definition: \begin{align*}
   \braket{v_j}{v_{k+1}}
-    &= \frac{\bra{v_j} \left(\ket{w_{k+1}} - \sum_{i=1}^k
-      \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
-      \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
-    &= \frac{\braket{v_j}{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-      \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-      \ket{v_i}\|} \\
-    &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{\|\ket{w_{k+1}} -
-      \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
-    &= 0.
+  &= \frac{\bra{v_j} \left(\ket{w_{k+1}} - \sum_{i=1}^k
+    \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
+    \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+  &= \frac{\braket{v_j}{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+    \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+    \ket{v_i}\|} \\
+  &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{\|\ket{w_{k+1}} -
+    \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+  &= 0.
 \end{align*} It is also clear that $\ket{v_{k+1}}$ as defined is already
 normalized. By induction, the correctness of the Gram-Schmidt procedure is
 proven.
@@ -255,9 +256,9 @@ basis $\ket{w_j}$.
   \ketbra{i}{i} = I$, and dropping some non-negative terms gives
   \begin{align*}
     \braket{v}{v}\braket{w}{w}
-      &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
-      &\geq \frac{\braket{v}{w}\braket{w}{v}}{\braket{w}{w}} \braket{w}{w} \\
-      &= \braket{v}{w}\braket{w}{v} = \|\braket{v}{w}\|^2,
+    &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
+    &\geq \frac{\braket{v}{w}\braket{w}{v}}{\braket{w}{w}} \braket{w}{w} \\
+    &= \braket{v}{w}\braket{w}{v} = \|\braket{v}{w}\|^2,
   \end{align*} as required. A little thought shows that equality occurs if and
   only if $\ket{v}$ and $\ket{w}$ are linearly related, $\ket{v} = z\ket{w}$ or
   $\ket{w} = z\ket{v}$, for some scalar $z$.
@@ -324,13 +325,14 @@ Show that the adjoint operation is anti-linear, \begin{equation}
 
 \paragraph{Solution:} Let $A = \sum_i a_iA_i$. For all vectors $\ket{v},
 \ket{w} \in V$, \begin{align*}
-  (A^\dagger \ket{v}, \ket{w}) &= (\ket{v}, A\ket{w}) \\
-    &= \sum_i a_i(\ket{v}, A_i\ket{w}) \\
-    &= \sum_i a_i(A_i\ket{w}, \ket{v})^* \\
-    &= \sum_i (A_i\ket{w}, a_i^*\ket{v})^* \\
-    &= \sum_i (a_i^*\ket{v}, A_i\ket{w}) \\
-    &= \sum_i (a_i^* A_i^\dagger \ket{v}, \ket{w}) \\
-    &= \left(\left(\sum_i a_i^* A_i^\dagger\right)\ket{v}, \ket{w}\right).
+  (A^\dagger \ket{v}, \ket{w})
+  &= (\ket{v}, A\ket{w}) \\
+  &= \sum_i a_i(\ket{v}, A_i\ket{w}) \\
+  &= \sum_i a_i(A_i\ket{w}, \ket{v})^* \\
+  &= \sum_i (A_i\ket{w}, a_i^*\ket{v})^* \\
+  &= \sum_i (a_i^*\ket{v}, A_i\ket{w}) \\
+  &= \sum_i (a_i^* A_i^\dagger \ket{v}, \ket{w}) \\
+  &= \left(\left(\sum_i a_i^* A_i^\dagger\right)\ket{v}, \ket{w}\right).
 \end{align*}
 
 \paragraph{Hermitian/self-adjoint operators.} An operator $A$ whose adjoint is
@@ -362,11 +364,11 @@ satisfies the equation $P^2 = P$.
 \paragraph{Solution:} From the definition in \eqref{eq:proj}, \begin{align*}
   P^2 &= \left(\sum_{i=1}^k \ketbra{i}{i}\right) \left(\sum_{i=1}^k
       \ketbra{i}{i}\right) \\
-    &= \left(\sum_{i=1}^k \ket{i}\braket{i}{i}\bra{i}\right) + \left(\sum_{i, j
-      \leq k, i \neq j} \ket{i}\braket{i}{j}\bra{j}\right) \\
-    &= \left(\sum_{i=1}^k \ket{i} \|i\|^2 \bra{i}\right) + 0 \\
-    &= \sum_{i=1}^k \ketbra{i}{i} \\
-    &= P.
+      &= \left(\sum_{i=1}^k \ket{i}\braket{i}{i}\bra{i}\right) + \left(
+        \sum_{i, j \leq k, i \neq j} \ket{i}\braket{i}{j}\bra{j}\right) \\
+      &= \left(\sum_{i=1}^k \ket{i} \|i\|^2 \bra{i}\right) + 0 \\
+      &= \sum_{i=1}^k \ketbra{i}{i} \\
+      &= P.
 \end{align*}
 
 \paragraph{Normal.} An operator $A$ is said to be \emph{normal} if $A A^\dagger
@@ -399,11 +401,12 @@ Clearly, an operator which is Hermitian is also normal.
   Next, we prove that $QMQ$ is normal. To see this, note that $QM = QM(P + Q) =
   QMQ$, and $Q M^\dagger = Q M^\dagger (P+Q) = Q M^\dagger Q$. Therefore, by
   the normality of $M$, and the observation that $Q^2 = Q$, \begin{align*}
-    Q M Q Q M^\dagger Q &= Q M Q M^\dagger Q \\
-      &= Q M M^\dagger Q \\
-      &= Q M^\dagger M Q \\
-      &= Q M^\dagger Q M Q \\
-      &= Q M^\dagger Q Q M Q,
+    Q M Q Q M^\dagger Q
+    &= Q M Q M^\dagger Q \\
+    &= Q M M^\dagger Q \\
+    &= Q M^\dagger M Q \\
+    &= Q M^\dagger Q M Q \\
+    &= Q M^\dagger Q Q M Q,
   \end{align*} so $QMQ$ is normal.
 
   By induction, $QMQ$ is diagonal with respect to some orthonormal basis for
@@ -464,15 +467,15 @@ $e^{i\theta}$ for some real $\theta$.
 be expressed as $U = \sum_i \lambda_i \ketbra{i}{i}$. Observing that
 anti-linearity of the adjoint holds by \eqref{eq:adj-anti-lin}, \begin{align*}
   U^\dagger U
-    &= \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger \left(\sum_j
-      \lambda_j \ketbra{j}{j}\right) \\
-    &= \left(\sum_i \lambda_i^* (\ketbra{i}{i})^\dagger\right) \left(\sum_j
-      \lambda_j \ketbra{j}{j}\right) \\
-    &= \left(\sum_i \lambda_i^*\ketbra{i}{i}\right) \left(\sum_j \lambda_j
-      \ketbra{j}{j}\right) \\
-    &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\braket{i}{j}\bra{j} \\
-    &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\delta_{ij}\bra{j} \\
-    &= \sum_i \lambda_i^*\lambda_i\ketbra{i}{i}
+  &= \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger \left(\sum_j
+    \lambda_j \ketbra{j}{j}\right) \\
+  &= \left(\sum_i \lambda_i^* (\ketbra{i}{i})^\dagger\right) \left(\sum_j
+    \lambda_j \ketbra{j}{j}\right) \\
+  &= \left(\sum_i \lambda_i^*\ketbra{i}{i}\right) \left(\sum_j \lambda_j
+    \ketbra{j}{j}\right) \\
+  &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\braket{i}{j}\bra{j} \\
+  &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\delta_{ij}\bra{j} \\
+  &= \sum_i \lambda_i^*\lambda_i\ketbra{i}{i}
 \end{align*}
 The eigenvalues of $U^\dagger U = I$ are $\lambda_i^*\lambda_i = 1$ which leads
 to the desired result.
@@ -485,13 +488,14 @@ the elements of $A'$ and $A''$ are $A'_{ij} = \mel{v_i}{A}{v_j}$ and $A''_{ij}
 
 \paragraph{Solution:} Noting that one could define a unitary matrix $U = \sum_i
 \ketbra{w_i}{v_i}$ with $U^\dagger = \sum_i \ketbra{v_i}{w_i}$, \begin{align*}
-  A'_{ij} &= \mel{v_i}{A}{v_j} \\
-    &= \mel{v_i}{U U^\dagger A U U^\dagger}{v_j} \\
-    &= \sum_{p,q,r,s} \braket{v_i}{w_p} \braket{v_p}{v_q} \mel{w_q}{A}{w_r}
-      \braket{v_r}{v_s} \braket{w_s}{v_j} \\
-    &= \sum_{p,q,r,s} \braket{v_i}{w_p} \delta_{pq} \mel{w_q}{A}{w_r}
-      \delta_{rs} \braket{w_s}{v_j} \\
-    &= \sum_{p,r} \braket{v_i}{w_p} A''_{pr} \braket{w_r}{v_j} \\
+  A'_{ij}
+  &= \mel{v_i}{A}{v_j} \\
+  &= \mel{v_i}{U U^\dagger A U U^\dagger}{v_j} \\
+  &= \sum_{p,q,r,s} \braket{v_i}{w_p} \braket{v_p}{v_q} \mel{w_q}{A}{w_r}
+    \braket{v_r}{v_s} \braket{w_s}{v_j} \\
+  &= \sum_{p,q,r,s} \braket{v_i}{w_p} \delta_{pq} \mel{w_q}{A}{w_r}
+    \delta_{rs} \braket{w_s}{v_j} \\
+  &= \sum_{p,r} \braket{v_i}{w_p} A''_{pr} \braket{w_r}{v_j} \\
 \end{align*}
 
 \paragraph{Positive operators.} A \emph{positive operator} $A$ is defined to be
@@ -517,11 +521,12 @@ Note that $\mel{v_i}{A}{v_j} = (\ket{v_i}, A\ket{v_j}) = (A^\dagger \ket{v_i},
 \end{equation*}
 On the other hand, noting that $A = A^\dagger$ and that from Exercise 2.17,
 Hermitian matrices only have real eigenvalues, \begin{align*}
-  (A^\dagger \ket{v_i}, \ket{v_j}) &= (A\ket{v_i}, \ket{v_j}) \\
-    &= (\ket{v_j}, A\ket{v_i})^* \\
-    &= (\ket{v_j}, \lambda_i\ket{v_i})^* \\
-    &= \lambda_i^*(\ket{v_j}, \ket{v_i})^* \\
-    &= \lambda_i(\ket{v_i}, \ket{v_j})
+  (A^\dagger \ket{v_i}, \ket{v_j})
+  &= (A\ket{v_i}, \ket{v_j}) \\
+  &= (\ket{v_j}, A\ket{v_i})^* \\
+  &= (\ket{v_j}, \lambda_i\ket{v_i})^* \\
+  &= \lambda_i^*(\ket{v_j}, \ket{v_i})^* \\
+  &= \lambda_i(\ket{v_i}, \ket{v_j})
 \end{align*}
 Since $\lambda_i \neq \lambda_j$, $(\ket{v_i}, \ket{v_j}) = 0$ must hold for
 the expressions of $\mel{v_i}{A}{v_j}$ to be consistent.
@@ -665,16 +670,18 @@ As $M$ has eigenvalues 7 and 1 corresponding to the eigenvectors
   \ket{-} = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ -1\end{bmatrix}
 \end{equation*} which form an orthonormal basis, by the spectral decomposition
 theorem, $M = 7\ketbra{+}{+} + \ketbra{-}{-}$. Therefore, \begin{align*}
-  \sqrt{M} &= \sqrt{7}\ketbra{+}{+} + \sqrt{1}\ketbra{-}{-} \\
-    &= \frac{1}{2}\begin{bmatrix}
+  \sqrt{M}
+  &= \sqrt{7}\ketbra{+}{+} + \sqrt{1}\ketbra{-}{-} \\
+  &= \frac{1}{2}\begin{bmatrix}
       \sqrt{7} + 1 & \sqrt{7} - 1 \\
       \sqrt{7} - 1 & \sqrt{7} + 1
     \end{bmatrix}, \\
-  \log{M} &= (\log{7})\ketbra{+}{+} + (\log{1})\ketbra{-}{-} \\
-    &= \frac{\log{7}}{2}\begin{bmatrix}
-      1 & 1 \\
-      1 & 1
-    \end{bmatrix}.
+  \log{M}
+  &= (\log{7})\ketbra{+}{+} + (\log{1})\ketbra{-}{-} \\
+  &= \frac{\log{7}}{2}\begin{bmatrix}
+    1 & 1 \\
+    1 & 1
+  \end{bmatrix}.
 \end{align*}
 
 \paragraph{\cite{mikeandike} Exercise 2.35: (Exponential of the Pauli matrices)
@@ -687,27 +694,28 @@ number. Prove that \begin{equation*}
 
 \paragraph{Solution:} First consider $\vec{v} \cdot \vec{\sigma}$:
 \begin{align*}
-  \vec{v} \cdot \vec{\sigma} &= v_1 \begin{bmatrix}
-      1 & 0 \\
-      0 & 1
-    \end{bmatrix} + v_2 \begin{bmatrix}
-      0 & -i \\
-      i & 0
-    \end{bmatrix} + v_3 \begin{bmatrix}
-      1 & 0 \\
-      0 & -1
-    \end{bmatrix} \\
-    &= \begin{bmatrix}
-      v_3 & v_1 - iv_2 \\
-      v_1 + iv_2 & - v_3
-    \end{bmatrix}.
+  \vec{v} \cdot \vec{\sigma}
+  &= v_1 \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} + v_2 \begin{bmatrix}
+    0 & -i \\
+    i & 0
+  \end{bmatrix} + v_3 \begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    v_3 & v_1 - iv_2 \\
+    v_1 + iv_2 & - v_3
+  \end{bmatrix}.
 \end{align*}
 Solving for the characteristic equation, \begin{align*}
   \det(\vec{v} \cdot \vec{\sigma} - \lambda I)
-    &= (v_3 - \lambda)(-v_3 - \lambda) - (v_1 - iv_2)(v_1 + iv_2) \\
-    &= \lambda^2 - (v_1^2 + v_2^2 + v_3^2) \\
-    &= \lambda^2 - |\vec{v}|^2 \\
-    &= \lambda^2 - 1,
+  &= (v_3 - \lambda)(-v_3 - \lambda) - (v_1 - iv_2)(v_1 + iv_2) \\
+  &= \lambda^2 - (v_1^2 + v_2^2 + v_3^2) \\
+  &= \lambda^2 - |\vec{v}|^2 \\
+  &= \lambda^2 - 1,
 \end{align*} and $\vec{v} \cdot \vec{\sigma}$ has eigenvalues $\pm 1$. Let
 the eigenvectors $\ket{\lambda_{\pm 1}}$ correspond to the eigenvalues $\pm 1$,
 forming an orthonormal basis.
@@ -715,18 +723,18 @@ forming an orthonormal basis.
 Since $\vec{v} \cdot \vec{\sigma}$ is Hermitian, $\vec{v} \cdot \vec{\sigma}$
 is diagonalizable. Then \begin{equation*}
   \vec{v} \cdot \vec{\sigma} = \ketbra{\lambda_1}{\lambda_1} -
-    \ketbra{\lambda_{-1}}{\lambda_{-1}}
+  \ketbra{\lambda_{-1}}{\lambda_{-1}}
 \end{equation*}
 and \begin{align*}
   \mathrm{exp}(i\theta\vec{v} \cdot \vec{\sigma})
-    &= e^{i\theta \cdot 1} \ketbra{\lambda_1}{\lambda_1} +
-      e^{i\theta \cdot (-1)} \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
-    &= (\cos\theta + i\sin\theta) \ketbra{\lambda_1}{\lambda_1} +
-      (\cos\theta - i\sin\theta) \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
-    &= (\cos\theta)(\ketbra{\lambda_1}{\lambda_1} + \ketbra{\lambda_{-1}}
-      {\lambda_{-1}}) + (i\sin\theta)(\ketbra{\lambda_1}{\lambda_1} -
-      \ketbra{\lambda_{-1}}{\lambda_{-1}}) \\
-    &= \cos(\theta) I + i\sin(\theta) \vec{v} \cdot \vec{\sigma}.
+  &= e^{i\theta \cdot 1} \ketbra{\lambda_1}{\lambda_1} +
+    e^{i\theta \cdot (-1)} \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+  &= (\cos\theta + i\sin\theta) \ketbra{\lambda_1}{\lambda_1} +
+    (\cos\theta - i\sin\theta) \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+  &= (\cos\theta)(\ketbra{\lambda_1}{\lambda_1} + \ketbra{\lambda_{-1}}
+    {\lambda_{-1}}) + (i\sin\theta)(\ketbra{\lambda_1}{\lambda_1} -
+    \ketbra{\lambda_{-1}}{\lambda_{-1}}) \\
+  &= \cos(\theta) I + i\sin(\theta) \vec{v} \cdot \vec{\sigma}.
 \end{align*}
 
 \paragraph{Trace.} The \emph{trace} of $A$ is defined to be the sum of its
@@ -740,8 +748,8 @@ Gram-Schmidt procedure as defined in \eqref{eq:gs-proc} to extend $\ket{\psi}$
 to an orthonormal basis $\ket{i}$ which includes $\ket{\psi}$ as the first
 element. Then we have \begin{align*}
   \mathrm{tr}(A\ketbra{\psi}{\psi})
-    &= \sum_i \mel{i}{A}{\psi} \braket{\psi}{i} \\
-    &= \mel{\psi}{A}{\psi}.
+  &= \sum_i \mel{i}{A}{\psi} \braket{\psi}{i} \\
+  &= \mel{\psi}{A}{\psi}.
 \end{align*}
 
 The trace is easily seen to be \emph{cyclic}, $\mathrm{tr}(AB) =

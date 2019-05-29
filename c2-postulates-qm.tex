@@ -79,11 +79,11 @@ $B = \sum_j b_j\ketbra{j}{j}$, noting that $A + B = \sum_i (a_i + b_i)
 \sum_j e^{b_j}\ketbra{j}{j}$, $\exp(A + B) = \sum_i e^{a_i + b_i}
 \ketbra{i}{i}$. It is clear that \begin{align*}
   \exp(A)\exp(B)
-    &= \left(\sum_i e^{a_i}\ketbra{i}{i}\right)\left(\sum_j e^{b_j}
-      \ketbra{j}{j}\right) \\
-    &= \sum_{i, j} e^{a_i}e^{b_j}\ket{i}\delta_{ij}\bra{j} \\
-    &= \sum_i e^{a_i}e^{b_i}\ketbra{i}{i} \\
-    &= \sum_i e^{a_i + b_i}\ketbra{i}{i} = \exp(A + B),
+  &= \left(\sum_i e^{a_i}\ketbra{i}{i}\right)\left(\sum_j e^{b_j}
+    \ketbra{j}{j}\right) \\
+  &= \sum_{i, j} e^{a_i}e^{b_j}\ket{i}\delta_{ij}\bra{j} \\
+  &= \sum_i e^{a_i}e^{b_i}\ketbra{i}{i} \\
+  &= \sum_i e^{a_i + b_i}\ketbra{i}{i} = \exp(A + B),
 \end{align*} which proves the result.
 
 \paragraph{\cite{mikeandike} (modified) Exercise 2.55:} Prove that $U(t_1,
@@ -155,9 +155,10 @@ measurement by $L_l$ is \begin{equation*}
 Noting that $\mel{\psi'}{M_m^\dagger M_m}{\psi'} = \frac{\mel{\psi}{L_l^\dagger
 M_m^\dagger M_m L_l}{\psi}}{\mel{\psi}{L_l^\dagger L_l}{\psi}}$,
 \begin{align*}
-  \ket{\psi''} &= \left(M_m\frac{L_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger
-    L_l}{\psi}}}\right)\sqrt{\frac{\mel{\psi}{L_l^\dagger L_l}{\psi}}
-    {\mel{\psi}{L_l^\dagger M_m^\dagger M_m L_l}{\psi}}} \\
+  \ket{\psi''}
+  &= \left(M_m\frac{L_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger L_l}{\psi}}}
+    \right)\sqrt{\frac{\mel{\psi}{L_l^\dagger L_l}{\psi}}{\mel{\psi}{
+    L_l^\dagger M_m^\dagger M_m L_l}{\psi}}} \\
   &= \frac{M_mL_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger M_m^\dagger M_m L_l}
     {\psi}}} \\
   &= \frac{N_{lm}\ket{\psi}}{\sqrt{\mel{\psi}{N_{lm}^\dagger N_{lm}}{\psi}}}.
@@ -240,10 +241,11 @@ Hermitian, and $M_mM_{m'} = \delta_{m, m'}M_m$. With these additional
 restrictions, Postulate 3 reduces to a projective measurement as just defined.
 
 The average value of the measurement is \begin{align*}
-  \langle M \rangle &= \sum_m mp(m) \\
-    &= \sum_m m\mel{\psi}{P_m}{\psi} \\
-    &= \bra{\psi}\left(\sum_m mP_m\right)\ket{\psi} \\
-    &= \mel{\psi}{M}{\psi};
+  \langle M \rangle
+  &= \sum_m mp(m) \\
+  &= \sum_m m\mel{\psi}{P_m}{\psi} \\
+  &= \bra{\psi}\left(\sum_m mP_m\right)\ket{\psi} \\
+  &= \mel{\psi}{M}{\psi};
 \end{align*} the average value of the observable $M$ is often written $\langle
 M \rangle \equiv \mel{\psi}{M}{\psi}$. From this formula for the average
 follows a formula for the standard deviation associated to observations of $M$,
@@ -358,9 +360,10 @@ such that $M_m = U_m\sqrt{E_m}$, where $E_m$ is the POVM associated to the
 measurement.
 
 \paragraph{Solution:} Noting that $U_m^{\dagger}U_m = I$, \begin{align*}
-  M_m^{\dagger}M_m &= \sqrt{E_m}U_m^{\dagger}U_m\sqrt{E_m} \\
-    &= \sqrt{E_m}I\sqrt{E_m} \\
-    &= E_m.
+  M_m^{\dagger}M_m
+  &= \sqrt{E_m}U_m^{\dagger}U_m\sqrt{E_m} \\
+  &= \sqrt{E_m}I\sqrt{E_m} \\
+  &= E_m.
 \end{align*}
 
 \subsection{Phase}
