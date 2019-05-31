@@ -30,16 +30,15 @@ its inputs, \begin{equation}
   \label{eq:lin-op}
 \end{equation}
 
-An important linear operator on any vector space $V$ is the \emph{identity
-operator}, $I_V$, defined by the equation $I_V\ket{v} \equiv \ket{v}$ for all
-vectors $\ket{v}$. When no chance of confusion arises we drop the subscript $V$
-and just write $I$ to denote the identity operator.
+The \emph{identity operator} on any vector space $V$, $I_V$ (written as $I$ if
+there is no chance of confusion), is defined by the equation $I_V\ket{v} \equiv
+\ket{v}$ for all vectors $\ket{v}$.
 
-Another important linear operator is the \emph{zero operator}, which we denote
-0. The zero operator maps all vectors to the zero vector, $0\ket{v} \equiv 0$.
+The \emph{zero operator}, denoted by 0, maps all vectors to the zero vector,
+$0\ket{v} \equiv 0$.
 
-\paragraph{Matrix representation of a linear operator.} Suppose $A : V
-\rightarrow W$ is a linear operator between vector spaces $V$ and $W$. Suppose
+\paragraph{Matrix representation of a linear operator.} Suppose $A: V
+\rightarrow W$ is a linear operator between vector spaces $V$ and $W$, and
 $\ket{v_1}, \ldots, \ket{v_m}$ is a basis for $V$ and $\ket{w_1}, \ldots,
 \ket{w_n}$ is a basis for $W$. Then for each $j$ in the range $1, \ldots, m$,
 there exist complex numbers $A_{1j}$ through $A_{nj}$ such that
@@ -48,7 +47,7 @@ there exist complex numbers $A_{1j}$ through $A_{nj}$ such that
 \end{equation} The matrix whose entries are the values $A_{ij}$ is said to form
 a \emph{matrix representation} of the operator $A$.
 
-[include part on change-of-basis matrix]
+[TODO: include part on change-of-basis matrix]
 
 \paragraph{\cite{mikeandike} Exercise 2.2: (Matrix representations: example)}
 Suppose $V$ is a vector space with basis vector $\ket{0}$ and $\ket{1}$, and
@@ -135,11 +134,7 @@ For example, $\mathbb{C}^n$ has an inner product defined by \begin{equation}
 \end{equation}
 
 We call a vector space equipped with an inner product an \emph{inner product
-space}.\footnote{Discussions of quantum mechanics often refer to \emph{Hilbert
-space}. In the finite dimensional complex vector spaces that come up in this
-book, a Hilbert space is \emph{exactly the same} as an inner product space.
-In infinite dimensions Hilbert spaces satisfy additional technical restrictions
-above and beyond inner product spaces, which we will not need to worry about.}
+space}.
 
 \paragraph{\cite{mikeandike} Exercise 2.6:} Show that any inner product
 $(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
@@ -259,9 +254,9 @@ basis $\ket{w_j}$.
     &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
     &\geq \frac{\braket{v}{w}\braket{w}{v}}{\braket{w}{w}} \braket{w}{w} \\
     &= \braket{v}{w}\braket{w}{v} = \|\braket{v}{w}\|^2,
-  \end{align*} as required. A little thought shows that equality occurs if and
-  only if $\ket{v}$ and $\ket{w}$ are linearly related, $\ket{v} = z\ket{w}$ or
-  $\ket{w} = z\ket{v}$, for some scalar $z$.
+  \end{align*} as required. Equality occurs if and only if $\ket{v}$ and
+  $\ket{w}$ are linearly related, $\ket{v} = z\ket{w}$ or $\ket{w} = z\ket{v}$,
+  for some scalar $z$.
 \end{proof}
 
 \section{Eigenvectors and eigenvalues}
@@ -278,7 +273,7 @@ that the characteristic function depends only upon the operator $A$, and not on
 the specific matrix representation used for $A$.
 
 The solutions of the \emph{characteristic equation} $c(\lambda) = 0$ are the
-eigenvalues of the operator $A$. By the fundamental theorem of algebra, every
+eigenvalues of the operator $A$. By the Fundamental Theorem of Algebra, every
 polynomial has at least one complex root, so every operator $A$ has at least
 one eigenvalue, and a corresponding eigenvector.
 
@@ -290,9 +285,7 @@ the vector space on which $A$ acts.
 operator $A$ on a vector space $V$ is a representation $A = \sum_i \lambda_i
 \ketbra{i}{i}$, where the vectors $\ket{i}$ form an orthonormal set of
 eigenvectors for $A$, with corresponding eigenvalues $\lambda_i$. An operator
-is said to be \emph{diagonalizable} if it has a diagonal representation. In the
-next section we will find a simple set of necessary and sufficient conditions
-for an operator on a Hilbert space to be diagonalizable.
+is said to be \emph{diagonalizable} if it has a diagonal representation.
 
 \paragraph{Degenerate.} When an eigenspace is more than one dimensional we say
 that it is \emph{degenerate}. This occurs when there are multiple linearly
@@ -338,8 +331,7 @@ Show that the adjoint operation is anti-linear, \begin{equation}
 \paragraph{Hermitian/self-adjoint operators.} An operator $A$ whose adjoint is
 $A$ is known as a \emph{Hermitian} or \emph{self-adjoint} operator.
 
-\paragraph{Projectors.} An important class of Hermitian operators is the
-\emph{projectors}. Suppose $W$ is a $k$-dimensional vector subspace of the
+\paragraph{Projectors.} Suppose $W$ is a $k$-dimensional vector subspace of the
 $d$-dimensional vector space $V$. Using the Gram-Schmidt procedure it is
 possible to construct an orthonormal basis $\ket{1}, \ldots, \ket{d}$ for $V$
 such that $\ket{1}, \ldots, \ket{k}$ is an orthonormal basis for $W$. By
@@ -372,9 +364,7 @@ satisfies the equation $P^2 = P$.
 \end{align*}
 
 \paragraph{Normal.} An operator $A$ is said to be \emph{normal} if $A A^\dagger
-= A^\dagger A$.
-
-Clearly, an operator which is Hermitian is also normal.
+= A^\dagger A$. Clearly, an operator which is Hermitian is also normal.
 
 \begin{theorem}[Spectral decomposition]
   Any normal operator $M$ on a vector space $V$ is diagonal with respect to
@@ -503,11 +493,6 @@ an operator such that for any vector $\ket{v}$, $(\ket{v}, A\ket{v})$ is a
 real, non-negative number. If $(\ket{v}, A\ket{v})$ is \emph{strictly} greater
 than zero for all $\ket{v} \neq 0$ then we say that $A$ is \emph{positive
 definite}.
-
-In Exercise 2.24 you will show that any positive operator is automatically
-Hermitian, and therefore by the spectral decomposition has diagonal
-representation $\sum_i \lambda_i \ketbra{i}{i}$, with non-negative eigenvalues
-$\lambda_i$.
 
 \paragraph{\cite{mikeandike} Exercise 2.22:} Prove that two eigenvectors of a
 Hermitian operator with different eigenvalues are necessarily orthogonal.
@@ -832,14 +817,6 @@ and $B$ is defined by \begin{equation}
   {A, B} \equiv AB + BA; \label{eq:anti-comm}
 \end{equation}
 we say $A$ \emph{anti-commutes} with $B$ if ${A, B} = 0$.
-
-It turns out that many important properties of pairs of operators can be
-deduced from their commutator and anti-commutator. Perhaps the most useful
-relation is the following connection between the commutator and the property
-of being able to \emph{simultaneously diagonalize} Hermitian operators $A$ and
-$B$, that is, write $A = \sum_i a_i\ketbra{i}{i}$, $B = \sum_i b_i\ketbra{i}{i}
-$, where $\ket{i}$ is some common orthonormal set of eigenvectors for $A$ and
-$B$.
 
 \begin{theorem}[Simultaneous diagonalization theorem]
   Suppose $A$ and $B$ are Hermitian operators. Then $[A, B] = 0$ if and only if
