@@ -38,7 +38,7 @@ the \emph{normalization condition} for state vectors.
   The evolution of the state of a \emph{closed} quantum system is also
   described by the \emph{Schr{\"o}dinger equation}, \begin{equation}
     i\hbar\frac{\mathrm{d}\ket{\psi}}{\mathrm{d}t} = H\ket{\psi}.
-      \label{eq:sch-eq}
+    \label{eq:sch-eq}
   \end{equation}
 \end{postulate}
 
@@ -66,7 +66,7 @@ The solution to Sch{\"o}dinger's equation will be verified later to be:
     \ket{\psi(t_1)} = U(t_1, t_2)\ket{\psi(t_1)},
 \end{equation*} where we define \begin{equation}
   U(t_1, t_2) \equiv \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right].
-    \label{eq:unit-sch-eq}
+  \label{eq:unit-sch-eq}
 \end{equation}
 
 \paragraph{\cite{mikeandike} Exercise 2.54:} Suppose $A$ and $B$ are commuting
@@ -104,11 +104,9 @@ could express $U = \sum_i e^{i\theta_i}\ketbra{i}{i}$ with the spectral
 decomposition theorem, leading to $K = -i\log(U) = \sum_i \theta_i\ketbra{i}
 {i}$. Clearly, $K = K^\dagger$, so $K$ is Hermitian.
 
-\paragraph{}
-
-These exercises show that $U(t_1, t_2)$ is unitary. There is therefore a
-one-to-one correspondence between the discrete-time description of dynamics
-using unitary operators, and the continuous time description using
+\paragraph{} These exercises show that $U(t_1, t_2)$ is unitary. There is
+therefore a one-to-one correspondence between the discrete-time description of
+dynamics using unitary operators, and the continuous time description using
 Hamiltonians.
 
 \section{Quantum measurement}
@@ -157,10 +155,10 @@ M_m^\dagger M_m L_l}{\psi}}{\mel{\psi}{L_l^\dagger L_l}{\psi}}$,
 \begin{align*}
   \ket{\psi''}
   &= \left(M_m\frac{L_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger L_l}{\psi}}}
-    \right)\sqrt{\frac{\mel{\psi}{L_l^\dagger L_l}{\psi}}{\mel{\psi}{
-    L_l^\dagger M_m^\dagger M_m L_l}{\psi}}} \\
+  \right)\sqrt{\frac{\mel{\psi}{L_l^\dagger L_l}{\psi}}{\mel{\psi}{
+  L_l^\dagger M_m^\dagger M_m L_l}{\psi}}} \\
   &= \frac{M_mL_l\ket{\psi}}{\sqrt{\mel{\psi}{L_l^\dagger M_m^\dagger M_m L_l}
-    {\psi}}} \\
+  {\psi}}} \\
   &= \frac{N_{lm}\ket{\psi}}{\sqrt{\mel{\psi}{N_{lm}^\dagger N_{lm}}{\psi}}}.
 \end{align*}
 
@@ -208,11 +206,11 @@ states}.
   $\sqrt{E_2}\ket{\psi_2} = \beta\sqrt{E_2}\ket{\phi}$, which implies a
   contradiction, as \begin{equation*}
     \mel{\psi_2}{E_2}{\psi_2} = |\beta|^2\mel{\phi}{E_2}{\phi} \leq |\beta|^2
-      < 1,
+    < 1,
   \end{equation*} where the second last inequality follows from the observation
   that \begin{equation*}
-    \mel{\phi}{E_2}{\phi} \leq \sum_i\mel{\phi}{E_i}{\phi} = \braket{\phi}
-      {\phi} = 1.
+    \mel{\phi}{E_2}{\phi} \leq \sum_i\mel{\phi}{E_i}{\phi} =
+    \braket{\phi}{\phi} = 1.
   \end{equation*}
 \end{proof}
 
@@ -251,7 +249,7 @@ M \rangle \equiv \mel{\psi}{M}{\psi}$. From this formula for the average
 follows a formula for the standard deviation associated to observations of $M$,
 \begin{equation*}
   [\Delta(M)]^2 = \langle (M - \langle M \rangle)^2 \rangle = \langle M^2
-    \rangle - \langle M \rangle^2.
+  \rangle - \langle M \rangle^2.
 \end{equation*}
 
 \paragraph{\cite{mikeandike} Exercise 2.58:} Suppose we prepare a quantum
@@ -261,11 +259,11 @@ deviation?
 
 \paragraph{Solution:} The average observed value of $M$ is \begin{equation*}
   \langle M \rangle = \mel{\psi}{M}{\psi} = \mel{\psi}{m}{\psi} =
-    m\braket{\psi}{\psi} = m.
+  m\braket{\psi}{\psi} = m.
 \end{equation*} Similarly, the average observed value of $M^2$ is
 \begin{equation*}
   \langle M^2 \rangle = \mel{\psi}{M^2}{\psi} = \mel{\psi}{m^2}{\psi} =
-    m^2\braket{\psi}{\psi} = m^2.
+  m^2\braket{\psi}{\psi} = m^2.
 \end{equation*} It is clear that the standard deviation is $\Delta(M) = \sqrt{
   \langle M^2 \rangle - \langle M \rangle^2} = \sqrt{m^2 - m^2} = 0$.
 
@@ -279,19 +277,19 @@ of observables gives rise in an elegant way to results such as the
   real. Note that $\mel{\psi}{[A, B]}{\psi} = 2iy$ and $\mel{\psi}{\{A, B\}}
   {\psi} = 2x$. This implies that \begin{equation*}
     |\mel{\psi}{[A, B]}{\psi}|^2 + |\mel{\psi}{\{A, B\}}{\psi}|^2 =
-      4|\mel{\psi}{AB}{\psi}|^2.
+    4|\mel{\psi}{AB}{\psi}|^2.
   \end{equation*} By the Cauchy-Schwarz inequality \begin{equation*}
     |\mel{\psi}{AB}{\psi}|^2 \leq \mel{\psi}{A^2}{\psi}\mel{\psi}{B^2}{\psi},
   \end{equation*} which combined with the above equation and dropping a
   non-negative term gives \begin{equation*}
-    |\mel{\psi}{[A, B]}{\psi}|^2 \leq 4\mel{\psi}{A^2}{\psi}\mel{\psi}{B^2}
-      {\psi}.
+    |\mel{\psi}{[A, B]}{\psi}|^2 \leq 4\mel{\psi}{A^2}{\psi}
+    \mel{\psi}{B^2}{\psi}.
   \end{equation*} Suppose $C$ and $D$ are two observables. Substituting $A = C
   - \langle C \rangle$ and $B = D - \langle D \rangle$ into the last equation,
   we obtain Heisenberg's uncertainty principle as it is usually stated:
   \begin{equation*}
     \Delta(C)\Delta(D) \geq \frac{|\mel{\psi}{[C, D]}{\psi}|}{2}.
-      \label{eq:hei-unc-prin}
+    \label{eq:hei-unc-prin}
   \end{equation*}
 
   The correct interpretation of the uncertainty principle is that if we prepare

@@ -27,7 +27,7 @@ exists. The number of elements in the basis is defined to be the
 and $W$ is defined to be any function $A : V \rightarrow W$ which is linear in
 its inputs, \begin{equation}
   A\left(\sum_i a_i\ket{v_i} \right) = \sum_i a_i A(\ket{v_i}).
-    \label{eq:lin-op}
+  \label{eq:lin-op}
 \end{equation}
 
 An important linear operator on any vector space $V$ is the \emph{identity
@@ -130,8 +130,8 @@ product if it satisfies the requirements that: \begin{enumerate}
 
 For example, $\mathbb{C}^n$ has an inner product defined by \begin{equation}
   ((y_1, \ldots, y_n), (z_1, \ldots, z_n)) \equiv \sum_i y_i^*z_i =
-    \begin{bmatrix}y_1^* & \dots & y_n^*\end{bmatrix}
-    \begin{bmatrix}z_1 \\ \vdots \\ z_n\end{bmatrix}.
+  \begin{bmatrix}y_1^* & \dots & y_n^*\end{bmatrix}
+  \begin{bmatrix}z_1 \\ \vdots \\ z_n\end{bmatrix}.
 \end{equation}
 
 We call a vector space equipped with an inner product an \emph{inner product
@@ -145,7 +145,7 @@ above and beyond inner product spaces, which we will not need to worry about.}
 $(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
 \begin{equation}
   \left(\sum_i \lambda_i\ket{w_i}, \ket{v}\right)
-    = \sum_i \lambda_i^*(\ket{w_i}, \ket{v}). \label{eq:conj-lin}
+  = \sum_i \lambda_i^*(\ket{w_i}, \ket{v}). \label{eq:conj-lin}
 \end{equation}
 
 \paragraph{Solution:} From $(\ket{v}, \ket{w}) = (\ket{w}, \ket{v})^*$,
@@ -178,8 +178,8 @@ $\ket{v_1}, \ldots, \ket{v_d}$ for the vector space $V$. Define $\ket{v_1}
 \equiv \ket{w_1}/\|\ket{w_1}\|$, and for $1 \leq k \leq d - 1$ define
 $\ket{v_{k+1}}$ inductively by \begin{equation}
   \ket{v_{k+1}} \equiv \frac{\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \ket{v_i}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \ket{v_i}\|}. \label{eq:gs-proc}
+  \ket{v_i}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|}.
+  \label{eq:gs-proc}
 \end{equation}
 
 \paragraph{\cite{mikeandike} Exercise 2.8:} Prove that the Gram-Schmidt
@@ -198,13 +198,13 @@ be shown to be orthogonal to $\ket{v_j}$ for $1 \leq j \leq k$ by working from
 the inductive definition: \begin{align*}
   \braket{v_j}{v_{k+1}}
   &= \frac{\bra{v_j} \left(\ket{w_{k+1}} - \sum_{i=1}^k
-    \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
-    \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+  \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
+  \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
   &= \frac{\braket{v_j}{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \ket{v_i}\|} \\
+  \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+  \ket{v_i}\|} \\
   &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{\|\ket{w_{k+1}} -
-    \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
+  \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
   &= 0.
 \end{align*} It is also clear that $\ket{v_{k+1}}$ as defined is already
 normalized. By induction, the correctness of the Gram-Schmidt procedure is
@@ -215,7 +215,7 @@ space $V$, and $\ket{w}$ is a vector in an inner product space $W$. Define
 $\ketbra{w}{v}$ to be the \emph{outer product}, or the linear operator from $V$
 to $W$ whose action is defined by \begin{equation}
   (\ketbra{w}{v})(\ket{v'}) \equiv \ket{w}\braket{v}{v'} = \braket{v}{v'}
-    \ket{w}. \label{eq:out-prod}
+  \ket{w}. \label{eq:out-prod}
 \end{equation} We can take linear combinations of outer product operators
 $\ketbra{w}{v}$ in the obvious way. By definition $\sum_i a_i
 \ketbra{w_i}{v_i}$ is the linear operator, which, when acting on $\ket{v'}$,
@@ -226,7 +226,7 @@ the vector space $V$, so an arbitrary vector $\ket{v}$ can be written $\ket{v}
 = \sum_i v_i\ket{i}$ for some set of complex numbers $v_i$. Note that
 $\braket{i}{v} = v_i$ and therefore \begin{equation*}
   \left(\sum_i \ketbra{i}{i}\right)\ket{v} = \sum_i \ket{i}\braket{i}{v} =
-    \sum_i v_i\ket{i} = \ket{v}.
+  \sum_i v_i\ket{i} = \ket{v}.
 \end{equation*} Since the last equation is true for all $\ket{v}$ it follows
 that \begin{equation} \label{eq:comp-rel}
   \sum_i \ketbra{i}{i} = I.
@@ -320,7 +320,7 @@ conjugation, and $T$ indicates the transpose operation.
 \paragraph{\cite{mikeandike} Exercise 2.14: (Anti-linearity of the adjoint)}
 Show that the adjoint operation is anti-linear, \begin{equation}
   \left(\sum_i a_iA_i\right)^\dagger = \sum_i a_i^* A_i^\dagger.
-    \label{eq:adj-anti-lin}
+  \label{eq:adj-anti-lin}
 \end{equation}
 
 \paragraph{Solution:} Let $A = \sum_i a_iA_i$. For all vectors $\ket{v},
@@ -434,7 +434,7 @@ eigenvectors for $M$, with corresponding eigenvalues $\lambda_i$. From the
 anti-linearity of the adjoint shown in \eqref{eq:adj-anti-lin},
 \begin{equation*}
   M^\dagger = \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger = \sum_i
-    \lambda_i^* (\ketbra{i}{i})^\dagger = \sum_i \lambda_i^* \ketbra{i}{i},
+  \lambda_i^* (\ketbra{i}{i})^\dagger = \sum_i \lambda_i^* \ketbra{i}{i},
 \end{equation*} which is equal to $M$ if and only if $\lambda_i = \lambda_i^*$
 for all $i$.
 
@@ -468,11 +468,11 @@ be expressed as $U = \sum_i \lambda_i \ketbra{i}{i}$. Observing that
 anti-linearity of the adjoint holds by \eqref{eq:adj-anti-lin}, \begin{align*}
   U^\dagger U
   &= \left(\sum_i \lambda_i \ketbra{i}{i}\right)^\dagger \left(\sum_j
-    \lambda_j \ketbra{j}{j}\right) \\
+  \lambda_j \ketbra{j}{j}\right) \\
   &= \left(\sum_i \lambda_i^* (\ketbra{i}{i})^\dagger\right) \left(\sum_j
-    \lambda_j \ketbra{j}{j}\right) \\
+  \lambda_j \ketbra{j}{j}\right) \\
   &= \left(\sum_i \lambda_i^*\ketbra{i}{i}\right) \left(\sum_j \lambda_j
-    \ketbra{j}{j}\right) \\
+  \ketbra{j}{j}\right) \\
   &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\braket{i}{j}\bra{j} \\
   &= \sum_{i,j} \lambda_i^*\lambda_j\ket{i}\delta_{ij}\bra{j} \\
   &= \sum_i \lambda_i^*\lambda_i\ketbra{i}{i}
@@ -492,9 +492,9 @@ the elements of $A'$ and $A''$ are $A'_{ij} = \mel{v_i}{A}{v_j}$ and $A''_{ij}
   &= \mel{v_i}{A}{v_j} \\
   &= \mel{v_i}{U U^\dagger A U U^\dagger}{v_j} \\
   &= \sum_{p,q,r,s} \braket{v_i}{w_p} \braket{v_p}{v_q} \mel{w_q}{A}{w_r}
-    \braket{v_r}{v_s} \braket{w_s}{v_j} \\
+  \braket{v_r}{v_s} \braket{w_s}{v_j} \\
   &= \sum_{p,q,r,s} \braket{v_i}{w_p} \delta_{pq} \mel{w_q}{A}{w_r}
-    \delta_{rs} \braket{w_s}{v_j} \\
+  \delta_{rs} \braket{w_s}{v_j} \\
   &= \sum_{p,r} \braket{v_i}{w_p} A''_{pr} \braket{w_r}{v_j} \\
 \end{align*}
 
@@ -517,7 +517,7 @@ $\ket{v_i}, \ket{v_j}$ corresponding to the eigenvalues $\lambda_i, \lambda_j$.
 Note that $\mel{v_i}{A}{v_j} = (\ket{v_i}, A\ket{v_j}) = (A^\dagger \ket{v_i},
 \ket{v_j})$. Then, \begin{equation*}
   (\ket{v_i}, A\ket{v_j}) = (\ket{v_i}, \lambda_j\ket{v_j}) = \lambda_j
-    (\ket{v_i}, \ket{v_j}).
+  (\ket{v_i}, \ket{v_j}).
 \end{equation*}
 On the other hand, noting that $A = A^\dagger$ and that from Exercise 2.17,
 Hermitian matrices only have real eigenvalues, \begin{align*}
@@ -563,17 +563,17 @@ By definition the tensor product satisfies the following basic properties:
   \item For an arbitrary scalar $z$ and elements $\ket{v}$ of $V$ and $\ket{w}$
     of $W$, \begin{equation*}
       z(\ket{v} \otimes \ket{w}) = (z\ket{v}) \otimes \ket{w} = \ket{v} \otimes
-        (z\ket{w}).
-  \end{equation*}
+      (z\ket{w}).
+    \end{equation*}
   \item For arbitrary $\ket{v_1}$ and $\ket{v_2}$ in $V$ and $\ket{w}$ in $W$,
     \begin{equation*}
       (\ket{v_1} + \ket{v_2}) \otimes \ket{w} = \ket{v_1} \otimes \ket{w} +
-        \ket{v_2} \otimes \ket{w}.
+      \ket{v_2} \otimes \ket{w}.
     \end{equation*}
   \item For arbitrary $\ket{v}$ in $V$ and $\ket{w_1}$ and $\ket{w_2}$ in $W$,
     \begin{equation*}
       \ket{v} \otimes (\ket{w_1} + \ket{w_2}) = \ket{v} \otimes \ket{w_1} +
-        \ket{v} \otimes \ket{w_2}.
+      \ket{v} \otimes \ket{w_2}.
     \end{equation*}
 \end{enumerate}
 
@@ -585,7 +585,7 @@ operator $A \otimes B$ on $V \otimes W$ by the equation \begin{equation*}
 This can be extended to all elements of $V \otimes W$ inthe natural way to
 ensure linearity of $A \otimes B$, that is, \begin{equation*}
   (A \otimes B)\left(\sum_i a_i\ket{v_i} \otimes \ket{w_i}\right)
-    \equiv \sum_i a_iA\ket{v_i} \otimes B\ket{w_i}.
+  \equiv \sum_i a_iA\ket{v_i} \otimes B\ket{w_i}.
 \end{equation*}
 
 It can be shown that $A \otimes B$ defined in this way is a well-defined linear
@@ -599,13 +599,13 @@ $W$ to $W'$, \begin{equation*}
 \end{equation*}
 where by definition \begin{equation*}
   \left(\sum_i c_iA_i \otimes B_i\right) \ket{v} \otimes \ket{w}
-    \equiv \sum_i c_iA_i\ket{v} \otimes B_i\ket{w}.
+  \equiv \sum_i c_iA_i\ket{v} \otimes B_i\ket{w}.
 \end{equation*}
 The inner products on the spaces $V$ and $W$ can be used to define a natural
 inner product on $V \otimes W$. Define \begin{equation*}
   \left(\sum_i a_i\ket{v_i} \otimes \ket{w_i}, \sum_j b_j\ket{v'_j} \otimes
-    \ket{w'_j}\right) \equiv \sum_{i,j} a_i^*b_j \braket{v_i}{v'_j}
-    \braket{w_i}{w'_j}.
+  \ket{w'_j}\right) \equiv \sum_{i,j} a_i^*b_j \braket{v_i}{v'_j}
+  \braket{w_i}{w'_j}.
 \end{equation*}
 It can be shown that the function so defined is a well-defined inner product.
 From this inner product, the inner product space $V \otimes W$ inherits the
@@ -622,8 +622,8 @@ a $p$ by $q$ matrix. Then we have the matrix representation: \begin{equation}
   \end{bmatrix} \label{eq:kro-prod}
 \end{equation}
 In this representation terms like $A_{11}B$ denote $p$ by $q$ submatrices whose
-entries are proportional to $B$, with overall proportionality constant $A_{11}$
-.
+entries are proportional to $B$, with overall proportionality constant
+$A_{11}$.
 
 We mention the useful notation $\ket{\phi}^{\otimes k}$, which means
 $\ket{\phi}$ tensored with itself $k$ times. Ananalogous notation is also used
@@ -635,7 +635,7 @@ two positive operators is positive.
 \paragraph{Solution:} Consider the positive operators $A$ and $B$, and observe
 that \begin{equation*}
   (\bra{\psi} \otimes \bra{\phi})(A \otimes B)(\ket{\psi} \otimes \ket{\phi})
-    = \mel{\psi}{A}{\psi} \otimes \mel{\phi}{B}{\phi}
+  = \mel{\psi}{A}{\psi} \otimes \mel{\phi}{B}{\phi}
 \end{equation*} by linearity.
 
 Since $A$ and $B$ are positive operators, it is clear that $\mel{\psi}{A}{\psi}
@@ -688,7 +688,7 @@ theorem, $M = 7\ketbra{+}{+} + \ketbra{-}{-}$. Therefore, \begin{align*}
 } Let $\vec{v}$ be any real, three-dimensional unit vector and $\theta$ a real
 number. Prove that \begin{equation*}
   \mathrm{exp}(i \theta \vec{v} \cdot \vec{\sigma}) = \cos(\theta)I + i
-    \sin(\theta)\vec{v} \cdot \vec{\sigma},
+  \sin(\theta)\vec{v} \cdot \vec{\sigma},
 \end{equation*} where $\vec{v} \cdot \vec{\sigma} \equiv \sum_{i=1}^3 v_i
 \sigma_i$.
 
@@ -728,12 +728,12 @@ is diagonalizable. Then \begin{equation*}
 and \begin{align*}
   \mathrm{exp}(i\theta\vec{v} \cdot \vec{\sigma})
   &= e^{i\theta \cdot 1} \ketbra{\lambda_1}{\lambda_1} +
-    e^{i\theta \cdot (-1)} \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+  e^{i\theta \cdot (-1)} \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
   &= (\cos\theta + i\sin\theta) \ketbra{\lambda_1}{\lambda_1} +
-    (\cos\theta - i\sin\theta) \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
+  (\cos\theta - i\sin\theta) \ketbra{\lambda_{-1}}{\lambda_{-1}} \\
   &= (\cos\theta)(\ketbra{\lambda_1}{\lambda_1} + \ketbra{\lambda_{-1}}
-    {\lambda_{-1}}) + (i\sin\theta)(\ketbra{\lambda_1}{\lambda_1} -
-    \ketbra{\lambda_{-1}}{\lambda_{-1}}) \\
+  {\lambda_{-1}}) + (i\sin\theta)(\ketbra{\lambda_1}{\lambda_1} -
+  \ketbra{\lambda_{-1}}{\lambda_{-1}}) \\
   &= \cos(\theta) I + i\sin(\theta) \vec{v} \cdot \vec{\sigma}.
 \end{align*}
 
@@ -792,12 +792,12 @@ turning it into a Hilbert space. \begin{enumerate}
         (A^\dagger B) = \mathrm{tr}(B^\dagger A)^*$. Working from the
         right-hand side, \begin{equation*}
           \mathrm{tr}(B^\dagger A)^* = \mathrm{tr}((B^\dagger)^* A^*) =
-            \mathrm{tr}(B^T A^*).
+          \mathrm{tr}(B^T A^*).
         \end{equation*}
         As the trace function is preserved under transposition of the matrices,
         one can consider the transpose \begin{equation*}
           \mathrm{tr}((B^T A^*)^T) = \mathrm{tr}((A^*)^T (B^T)^T) = \mathrm{tr}
-            (A^\dagger B).
+          (A^\dagger B).
         \end{equation*}
       \item \emph{$(A, A) \geq 0$ with equality if and only if $A = 0$.} The
         case of equality is trivial. As for any non-zero $A$, since $A^\dagger
